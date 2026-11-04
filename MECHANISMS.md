@@ -700,7 +700,7 @@ HTTP: `python -m kuttaka_runtime.serve http --port 8765`
 MCP (stdio JSON-RPC): tools `solve`, `stats`, `library` — the same three.
 A `solve` result is flagged `isError` unless `status == 'checked'`.
 
-CLI: `python -m kuttaka_runtime '<task in plain words>'`
+CLI: `python3 -m kuttaka_runtime.solve '<task in plain words>'` (`python -m kuttaka_runtime` works too, via `__main__.py`)
 - `--example '{"input":...,"expected":...}'` (repeatable, trusted checks);
   `--workspace`; `--max-calls` (default 80); `--max-executions` (default 512,
   sandbox budget); `--rounds`; `--json`; `--witness oeis` (off by default);
@@ -710,15 +710,18 @@ CLI: `python -m kuttaka_runtime '<task in plain words>'`
 - `settings(**overrides)` builds the same configuration programmatically, for
   callers embedding the solver rather than shelling out.
 
-**Worked example.** The judge quickstart's live task:
+**Worked example.** The judge quickstart's live task (with the model flags it
+needs):
 
 ```
-python -m kuttaka_runtime 'Write run(n) to return the sum of the integers from 1 through n.' \
-  --example '{"input": 4, "expected": 10}'
+python3 -m kuttaka_runtime.solve 'Write run(n) to return the sum of the integers from 1 through n.' \
+  --example '{"input":4,"expected":10}' \
+  --protocol openai --base-url https://integrate.api.nvidia.com/v1 \
+  --key-env NVIDIA_API_KEY --model meta/muse-glimmer-30b --rounds 1
 ```
 
 Exit 0 means the method passed every gate. Anything else means it didn't —
-and the JSON says exactly where it stopped.
+and the JSON (`--json`) says exactly where it stopped.
 
 **The idea.** The system meets the world through a narrow, honest interface:
 a task in, a checked answer or a refusal out.
