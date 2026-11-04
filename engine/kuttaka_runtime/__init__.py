@@ -1,4 +1,4 @@
-"""Astra: engineered, domain-neutral investigation infrastructure."""
+"""Kuttaka runtime and its shared execution components."""
 
 from .runtime import Budget, RunResult, investigate
 from .store import Journal

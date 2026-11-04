@@ -281,7 +281,7 @@ class PythonExecutor:
         if len(payload) > size_limit:
             raise ValueError(f'program input and libraries exceed {size_limit // 1024} KiB')
 
-        name = 'astra-exec-' + uuid.uuid4().hex
+        name = 'kuttaka-exec-' + uuid.uuid4().hex
         proc = subprocess.Popen(self._command(name), stdin=subprocess.PIPE,
                                 stdout=subprocess.PIPE, stderr=subprocess.PIPE,
                                 env=self.env, bufsize=0)

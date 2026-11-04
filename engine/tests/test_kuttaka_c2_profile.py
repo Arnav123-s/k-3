@@ -14,7 +14,7 @@ from tests.test_kuttaka_campaign import STREAM, Scripted, local_executor
 
 def volatile_executor(job):
     """Like the Docker executor: every execution reports a fresh container name."""
-    return dict(local_executor(job), container_name='astra-exec-' + uuid.uuid4().hex)
+    return dict(local_executor(job), container_name='kuttaka-exec-' + uuid.uuid4().hex)
 
 
 def run(base, name, profile, executor, replay_from=None):

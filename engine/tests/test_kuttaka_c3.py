@@ -594,7 +594,7 @@ class C3DevStreamTests(unittest.TestCase):
 def volatile_executor(job):
     """Like the Docker executor, each execution reports a fresh container name."""
     import uuid
-    return dict(local_distinct_executor(job), container_name='astra-exec-' + uuid.uuid4().hex)
+    return dict(local_distinct_executor(job), container_name='kuttaka-exec-' + uuid.uuid4().hex)
 
 
 class C3ReplayStabilityTests(unittest.TestCase):

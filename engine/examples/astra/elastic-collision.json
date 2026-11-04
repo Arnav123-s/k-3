@@ -1,9 +1,0 @@
-{
-  "request": "Write run(p) for a one-dimensional perfectly elastic collision. p gives positive integer masses m1,m2 and integer initial velocities u1,u2. Return final velocities as {v1:[numerator,denominator],v2:[numerator,denominator]}, reduced exactly with positive denominators. Use conservation of momentum and kinetic energy and the nontrivial collision branch.",
-  "checks": [
-    {"input": {"m1": 1, "m2": 1, "u1": -1, "u2": 1}, "expected": {"v1": [1, 1], "v2": [-1, 1]}},
-    {"input": {"m1": 1, "m2": 3, "u1": 4, "u2": 0}, "expected": {"v1": [-2, 1], "v2": [2, 1]}},
-    {"input": {"m1": 2, "m2": 3, "u1": 5, "u2": -1}, "expected": {"v1": [-11, 5], "v2": [19, 5]}}
-  ],
-  "input": {"m1": 3, "m2": 2, "u1": -2, "u2": 3}
-}

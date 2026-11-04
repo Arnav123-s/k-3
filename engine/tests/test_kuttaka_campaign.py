@@ -165,7 +165,7 @@ class CampaignTests(unittest.TestCase):
 
 
 class NormalizeActionTests(unittest.TestCase):
-    """Reply shapes observed in the 2026-10-28 live canary (claude/astra-dev-canary 8b29057)."""
+    """Reply shapes observed in the 2026-10-28 live canary (8b29057)."""
 
     def test_bare_artifact_is_an_answer(self):
         self.assertEqual(normalize_action({'artifact': 'a' * 64}),

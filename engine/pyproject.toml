@@ -8,7 +8,6 @@ authors = [{ name = "Arnav123-s" }]
 [project.scripts]
 kuttaka = "kuttaka_runtime.solve:main"
 kuttaka-serve = "kuttaka_runtime.serve:main"
-astra = "kuttaka_runtime.cli:main"
 
 [tool.unittest]
 start-directory = "tests"

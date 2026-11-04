@@ -1,6 +1,6 @@
 # kuttka/3 runtime
 
-This directory contains the runnable engine from parent commit `89deb236a4e0b7e199dd4750523e83d9ed739e3c`. The submission packages the Python source, tests, example task specifications, and experiment tooling. The parent repository preserves the historical architecture notes and run artifacts.
+This directory contains the runnable Kuttaka engine based on parent commit `89deb236a4e0b7e199dd4750523e83d9ed739e3c`. The submission packages the Python source, tests, and Kuttaka experiment tooling. The standalone research CLI and experiment fixtures were excluded. Shared runtime modules retain their stored-data format identifiers for compatibility. The parent repository preserves the historical architecture notes and run artifacts.
 
 ## Entry points
 
@@ -21,4 +21,4 @@ Use Linux or WSL, Python 3.11 or later, and Docker. The [judge quickstart](../JU
 | Run bounded breadth-first search from model-proposed step functions | [solve_krama.py](kuttaka_runtime/solve_krama.py) |
 | Optional published sequence witness | [witness.py](kuttaka_runtime/witness.py) |
 
-The witness option uses an external source and stays off in the registered model comparisons. See the [parent architecture at the engine pin](https://github.com/Arnav123-s/kuttaka/blob/89deb23/docs/ARCHITECTURE.md) for the full decision flow, test references, and limits.
+The witness option uses an external source and stays off in the registered model comparisons. See the [submission overview](../README.md) for the decision flow.

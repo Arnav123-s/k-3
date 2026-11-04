@@ -1,3 +1,3 @@
-from .cli import main
+from .solve import main
 
 raise SystemExit(main())

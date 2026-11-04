@@ -4,17 +4,18 @@ K^3 is a model wrapper that proposes checks, runs generated Python inside a pinn
 
 ## Verify locally
 
-Use Linux or WSL with Python 3.11 or later and a running Docker daemon. From the checkout:
+Use Linux or WSL with Python 3.11 or later and a running Docker daemon. Clone the submission and enter the engine directory:
 
 ```bash
-cd engine
+git clone https://github.com/Arnav123-s/k-3.git
+cd k-3/engine
 docker pull python@sha256:aa943ce411423c7582288f18707ff66eddcbaeb510502d747a72aeb34f30d159
 python -c 'from kuttaka_runtime.execution import preflight; print(preflight())'
 python -m unittest tests.test_krama
-ASTRA_DOCKER_TESTS=1 python -m unittest discover -s tests -t .
+KUTTAKA_DOCKER_TESTS=1 python -m unittest discover -s tests -t .
 ```
 
-The full suite previously passed 1,454 tests with Docker on at engine pin 89deb236a4e0b7e199dd4750523e83d9ed739e3c. The test suite uses scripted model fixtures and does not require an API key.
+The test suite uses scripted model fixtures and does not require an API key. The packaged engine is based on the builder's `89deb23` pin.
 
 ## Run a live task
 
