@@ -4,7 +4,7 @@ Record one video and read the quoted lines in order. Pause for two seconds betwe
 
 ## 0:00–0:22 | The pitch
 
-"Your coding model hands you a program. How do you know it works? Kuttaka gives that model a test bench. It runs the proposed method, shows the evidence behind the result, and can hold back an answer when the evidence disagrees. This is Kuttaka 3."
+"Your coding model hands you a program. How do you know it works? Kuttaka gives it a test bench. The model's weights stay fixed, but the system keeps developing. It saves checked methods for later tasks and can hold back an answer when the evidence disagrees."
 
 ## 0:22–0:44 | Show the work
 
