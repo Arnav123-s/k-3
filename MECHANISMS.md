@@ -190,7 +190,7 @@ methods, typed by input/output forms, listed by size then method order.
 "Nothing here calls a model or runs code; the Solver screens each recipe on
 every check input."
 
-**Vallī (E, S, B).** The model writes only a reduction step — `measure`,
+**Vallī** (`solve_valli.py`; E, S, B). The model writes only a reduction step — `measure`,
 `small`, `reduce`, `combine` (+ optional `base`) — and Kuttaka assembles the
 recursion (`CALL_LIMIT = 200000`). Runtime-verified invariants: every reduced
 input has strictly smaller measure (well-founded), computed answers memoized
@@ -652,7 +652,7 @@ sandbox everything runs in. §13.
 
 ## 13. Sandboxed execution
 
-**What it is (E, S, B — functionally identical).**
+**What it is (E, S, B — functionally identical).** `execution.py`:
 `PythonExecutor(timeout=20, output_limit=262144, memory='256m')` runs candidate
 `run(input)` source in a fresh Docker container: `--network=none`,
 `--read-only`, `--cap-drop=ALL`, `--security-opt=no-new-privileges`,
@@ -686,7 +686,8 @@ choose from. §14, then the comparison table in Part V.
 
 ## 14. The server and the CLI
 
-**What it is (E, S, B — the packaged surface judges touch).**
+**What it is (E, S, B — the packaged surface judges touch).** `serve.py`,
+`__main__.py`:
 
 HTTP: `python -m kuttaka_runtime.serve http --port 8765`
 - `POST /solve` takes `{"task": str, "examples": [{"input","expected"}], "max_calls": int}`
@@ -744,7 +745,7 @@ In the default engine (pin 89deb23), not in speed or best:
 - **Parīkṣā.** Adds checks where prior knowledge and a blind re-derivation
   agree against the method. Thinking orchestrated with precedent — knowing
   isn't the same as learning.
-- **Witness (`_testify`).** Checks the method against published sequences;
+- **Witness (`witness.py`, `_testify`).** Checks the method against published sequences;
   asks again on disagreement. Thinking orchestrated with the world — "if you
   can't verify your own work then you look for others' works that can verify
   your work."
