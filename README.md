@@ -8,6 +8,16 @@ Here, self-awareness means recognizing when evidence for an answer is weak or co
 
 [Judge quickstart](JUDGE_QUICKSTART.md) · [Final demo](kuttaka3-final.mp4) · [Results and limitations](EVIDENCE.md)
 
+## Choose an engine
+
+| Edition | Directory | Source pin | Why choose it |
+|---|---|---|---|
+| Final tested | [engine](engine/) | `89deb23` | Default for judges. The cleaned submission passed all 1,248 tests with Docker enabled. |
+| Speed-focused (W4-r) | [engine-speed](engine-speed/) | `cff12a9` | Reuses computed values within a solve. The recorded hard-suite run solved 11/12 in 40 model calls. |
+| Best recorded score (W4-o) | [engine-best](engine-best/) | `8ce0951` | The recorded hard-suite run solved 12/12 in 53 calls and passed 79/79 private cases on rescore. |
+
+Use one engine directory per run and a separate workspace for each. The historical scores come from separate development runs. The call counts describe those runs. See the [evidence](EVIDENCE.md) for the tradeoffs.
+
 ## Run it
 
 On Linux or WSL with Python 3.11+ and Docker:

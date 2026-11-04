@@ -1,0 +1,20 @@
+[project]
+name = "kuttaka"
+version = "0.1.0"
+description = "One prompt in, a checked answer out, with any model: write, check, repair, split and reuse methods."
+requires-python = ">=3.11"
+authors = [{ name = "Arnav123-s" }]
+
+[project.scripts]
+kuttaka = "kuttaka_runtime.solve:main"
+kuttaka-serve = "kuttaka_runtime.serve:main"
+
+[tool.unittest]
+start-directory = "tests"
+
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+include = ["kuttaka_runtime*"]

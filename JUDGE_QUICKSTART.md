@@ -17,6 +17,10 @@ KUTTAKA_DOCKER_TESTS=1 python -m unittest discover -s tests -t .
 
 The test suite uses scripted model fixtures and does not require an API key. The packaged engine is based on the builder's `89deb23` pin.
 
+## Try a historical edition
+
+Run the same CLI from `k-3/engine-speed` for W4-r or `k-3/engine-best` for W4-o. Use separate workspaces with `--workspace` and run from the chosen directory so Python loads that edition. The full suite above belongs to the default `engine` directory. The historical editions package the runnable source and have been smoke-tested with the pinned Docker image.
+
 ## Run a live task
 
 Set NVIDIA_API_KEY in your environment before invoking this command. Obtain your own endpoint credentials. Model access and charges depend on your account.
