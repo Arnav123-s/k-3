@@ -1,42 +1,42 @@
-# Kuttaka 3 narration for the 2:47 cut
+# Kuttaka 3 narration
 
-Record one video and read the quoted lines in order. Pause for two seconds between sections. If you miss a line, pause and restart it. Send the original as **NARRATION.mp4**. The timestamps are edit marks. Read at a natural pace.
+Record one video and read the quoted lines in order. Pause for two seconds between sections. If you miss a line, pause and restart it. Send the original as **NARRATION.mp4**. Timestamps below are from the 2:47 edit — re-time them to your cut. Read at a natural pace.
 
-## 0:00–0:22 | The pitch
+## The pitch
 
-"Kuttaka is an attempt at a systematic cognitive substrate: to make the model more self-aware, and to keep developing without the model itself changing. Its weights stay fixed. The system grows by saving checked methods and using them on later tasks."
+"Kuttaka is an attempt at a systematic cognitive substrate: to make the model more self-aware, and to keep developing without the model itself changing. Its weights stay fixed. The system grows — by saving checked methods, and using them on later tasks."
 
-## 0:22–0:44 | Show the work
+## Show the work
 
-"Here the task is to find a square root modulo a prime. The terminal replay shows how Kuttaka starts with a contract, examples, and a slow reference. It tests those checks, then runs the candidate in a sandbox. The saved method passed all eleven private cases."
+"Here's the task: find a square root modulo a prime. Watch the terminal replay — Kuttaka starts with a contract, examples, and a slow reference. It tests those checks before any code is written, then runs the candidate in a sandbox. The saved method passed all eleven private cases."
 
-## 0:44–0:57 | Show a failure that changed the outcome
+## Show a failure that changed the outcome
 
-"On this drag problem, a reference and a fresh derivation both challenged the first method. Kuttaka rejected that method. The repair passed all five private cases."
+"On this drag problem, a reference and a fresh derivation both challenged the first method — so Kuttaka rejected it. The repair passed all five private cases. That's the climb: from failure to success. First-try accuracy was never the goal."
 
-## 0:57–1:10 | Spark
+## Spark
 
-"At the largest recorded Spark lead, Kuttaka had nine solves to six. That snapshot used fifty-two calls with Kuttaka and forty-five without."
+"On a public benchmark, at the largest recorded lead: nine solves with Kuttaka, six without. Fifty-two calls with Kuttaka, forty-five without. That's a snapshot of a run in progress — not a final score."
 
-## 1:10–1:30 | Glimmer
+## Glimmer
 
-"Here Glimmer with Kuttaka gets its second solve. Glimmer alone is still at zero. That is ninety-two dispatched calls with Kuttaka and one hundred one alone, at this point in the run."
+"Same story here. Glimmer with Kuttaka gets its second solve while Glimmer alone is still at zero — ninety-two calls with Kuttaka, one hundred one alone, at this point in the run."
 
-## 1:30–1:42 | The short results cards
+## The short results cards
 
 "In our hard development run, Glimmer went from eight solves to twelve with Kuttaka. A separate rescore passed all seventy-nine private cases."
 
-## 1:42–2:12 | The animated results
+## The animated results
 
-"The hard-suite run used fifty-three calls with Kuttaka versus twelve alone. These results come from the runs I could complete with the resources and time available. Slow model responses limited how many trials I could finish. Some development runs improved as Kuttaka evolved. With faster responses and more time, I'd test on a larger scale to see whether those gains hold or grow."
+"Fifty-three calls with Kuttaka versus twelve alone. These are the runs I could complete with the resources and time I had — slow model responses limited how many trials I finished. Some runs improved as Kuttaka itself evolved. With faster responses and more time, I'd test at a larger scale, to see whether these gains hold — or grow."
 
-## 2:12–2:32 | The deeper mechanism
+## The deeper mechanism
 
-"The idea comes from Aryabhata's kuttaka. Break a hard problem into steps you can check. The runtime can retest methods it saved, combine pieces, and return to a weak check when a candidate fails. When a dispute remains, Kuttaka can say it has no verified answer."
+"The idea comes from Aryabhata's kuttaka, from the year 499. Break a hard problem into steps you can check. The runtime retests methods it saved, combines pieces, and goes back to a weak check when a candidate fails. And when a dispute can't be settled — Kuttaka says it has no verified answer. An honest 'not known' beats a confident wrong one."
 
-## 2:32–2:47 | Close
+## Close
 
-"Open the Kuttaka 3 repository and follow the judge quickstart. Run the local tests, or bring your own model endpoint and give it a task. You'll see the method and what supports it."
+"Open the Kuttaka 3 repository and follow the judge quickstart. Run the local tests — or bring your own model endpoint, give it a task, and watch what comes back: the method, and everything that supports it. The system develops, so the model doesn't have to."
 
 ## Optional Muse Code screen capture
 
