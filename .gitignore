@@ -16,3 +16,4 @@ engine/**/evidence.tar.gz
 /engine/experiments/solve_suite/hidden.json
 /engine/experiments/solve_suite/hard_hidden.json
 /engine/experiments/solve_suite/growth_hidden.json
+.judge-workspace/

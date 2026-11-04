@@ -24,10 +24,10 @@ On Linux or WSL with Python 3.11+ and Docker:
 
 ```bash
 git clone https://github.com/Arnav123-s/k-3.git
-cd k-3/engine
+cd k-3
 ```
 
-Follow the [quickstart](JUDGE_QUICKSTART.md) to run the sandbox tests with scripted models or try a task with your own endpoint.
+Run `bash smoke-engines.sh` from the repository root after installing the pinned Docker image. The [judge quickstart](JUDGE_QUICKSTART.md) gives the exact commands for the three-engine smoke check, the full default-engine tests, and a live task. No other repository is needed.
 
 ## How it works
 

@@ -1,6 +1,6 @@
 # kuttka/3 runtime
 
-This directory contains the runnable Kuttaka engine based on parent commit `89deb236a4e0b7e199dd4750523e83d9ed739e3c`. The submission packages the Python source, tests, and Kuttaka experiment tooling. The standalone research CLI and experiment fixtures were excluded. Shared runtime modules retain their stored-data format identifiers for compatibility. The parent repository preserves the historical architecture notes and run artifacts.
+This directory contains the runnable Kuttaka engine based on parent commit `89deb236a4e0b7e199dd4750523e83d9ed739e3c`. The submission packages the Python source, tests, and Kuttaka experiment tooling. The standalone research CLI and experiment fixtures were excluded. Shared runtime modules retain their stored-data format identifiers for compatibility.
 
 ## Entry points
 

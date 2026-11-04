@@ -1,6 +1,6 @@
 # Recorded evidence
 
-The submission includes the [per-task W4-o scorecard and artifact hashes](W4O_EVIDENCE.md) and [demo timings](DEMO_EDIT.md). The original run artifacts and reports live in the parent project and may require repository access.
+The submission includes the [per-task W4-o scorecard and artifact hashes](W4O_EVIDENCE.md) and [demo timings](DEMO_EDIT.md). The [W4-r per-task scorecard](W4R_EVIDENCE.md) is also included. These scorecards report recorded outcomes and hashes. Private cases and raw run journals are outside this submission.
 
 ## Earlier development runs
 
