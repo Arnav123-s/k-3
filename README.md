@@ -36,7 +36,7 @@ Run `bash smoke-engines.sh` from the repository root after installing the pinned
 3. **Use disagreements.** A failed check can lead to repair, decomposition, or a closer look at the check itself. If a dispute remains unresolved, the runtime can withhold the answer.
 4. **Keep the evidence.** The method library records what passed, what supports it, and where a method came from.
 
-The [packaged engine](engine/) is **kuttka/3**, based on builder pin `89deb23`. It includes the CLI, HTTP/MCP server, method library, and tests. It is licensed under [Apache-2.0](LICENSE).
+The [packaged engine](engine/) is **kuttaka/3**, based on builder pin `89deb23`. It includes the CLI, HTTP/MCP server, method library, and tests. It is licensed under [Apache-2.0](LICENSE).
 
 ## What the demo shows
 
