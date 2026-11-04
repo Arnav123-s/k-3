@@ -27,3 +27,5 @@ The demo shows the largest recorded LiveCodeBench lead for Spark + Kuttaka at 00
 [Expanded demo preview](kuttaka3-demo-expanded.mp4) · [Demo timing, narration, and evidence](DEMO_EDIT.md)
 
 [Watch the 3:40 cut with archived terminal excerpts](kuttaka3-capture-cut.mp4). Glimmer reaches 2/12 with Kuttaka while Glimmer alone is at 0/12. Wonder reaches 10/12 in both arms, with fewer dispatched calls in the standalone arm at the checkpoint.
+
+**Latest preview** [3:07 cut with quicker scorecards](kuttaka3-tight-cut.mp4). The demos lead into two six-second results cards and the full original ending.
