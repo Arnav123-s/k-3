@@ -22,4 +22,6 @@ The growth comparator is Kuttaka with fresh memory. The hard-suite scorecard com
 
 The demo shows the largest recorded LiveCodeBench lead for Spark + Kuttaka at 00:19:04 UTC on November 4, 2026. Spark alone had 6/12 verified solves after 45 dispatched calls. Spark + Kuttaka had 9/12 after 52. This is an in-progress checkpoint with different call counts.
 
+[Owner voiceover and screen-recording script](VOICEOVER.md)
+
 [Expanded demo preview](kuttaka3-demo-expanded.mp4) · [Demo timing, narration, and evidence](DEMO_EDIT.md)
