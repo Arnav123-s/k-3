@@ -1,6 +1,6 @@
 # Final demo
 
-[Watch Kuttaka 3](kuttaka3-final.mp4). Total runtime is 2:47.
+Timing notes for the original 2:47 edit.
 
 | Time | Segment |
 |---|---|

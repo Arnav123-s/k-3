@@ -6,7 +6,7 @@ The model's weights stay fixed. The workspace grows as Kuttaka saves methods, ch
 
 Here, self-awareness means recognizing when evidence for an answer is weak or conflicting. Kuttaka can withhold a disputed answer. In the recorded W4-o comparison, Glimmer alone delivered four wrong answers and Glimmer with Kuttaka delivered zero, using different call counts. [See the run evidence](EVIDENCE.md).
 
-[Judge quickstart](JUDGE_QUICKSTART.md) · [Final demo](kuttaka3-final.mp4) · [Results and limitations](EVIDENCE.md)
+[Judge quickstart](JUDGE_QUICKSTART.md) · [Results and limitations](EVIDENCE.md)
 
 ## Choose an engine
 
