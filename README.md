@@ -1,6 +1,10 @@
 # Kuttaka 3
 
-**Give your coding model a test bench.** Kuttaka 3 runs model-written Python in a pinned Docker sandbox, challenges weak checks, and repairs candidates when evidence disagrees. It returns a method with the checks that support it, or reports that it could not verify an answer.
+> Kuttaka: an attempt at a systematic cognitive substrate — to make the model more self-aware, and to keep developing without the model itself changing.
+
+The model's weights stay fixed. The workspace grows as Kuttaka saves methods, checks, and the evidence behind them. Later tasks can retest and reuse that work. On the recorded growth suite, Kuttaka solved 12/12 with memory and 11/12 with a fresh workspace.
+
+Here, self-awareness means recognizing when evidence for an answer is weak or conflicting. Kuttaka can withhold a disputed answer. In the recorded W4-o comparison, Glimmer alone delivered four wrong answers and Glimmer with Kuttaka delivered zero, using different call counts. [See the run evidence](EVIDENCE.md).
 
 [Judge quickstart](JUDGE_QUICKSTART.md) · [Final demo](kuttaka3-final.mp4) · [Results and limitations](EVIDENCE.md)
 
@@ -29,11 +33,3 @@ The [packaged engine](engine/) is **kuttka/3**, based on builder pin `89deb23`. 
 In the earlier W4-o development run, Glimmer solved **8/12 alone** and **12/12 with Kuttaka**, using 12 and 53 model calls respectively. The Kuttaka rescore passed **79/79 private cases**. [Evidence and limitations](EVIDENCE.md) includes the other runs, the benchmark checkpoints, and how to interpret them.
 
 [Film timings](DEMO_EDIT.md) · [Narration script](VOICEOVER.md)
-
-## Philosophy
-
-> Kuttaka: an attempt at a systematic cognitive substrate — to make the model more self-aware, and to keep developing without the model itself changing.
-
-The model's weights stay fixed. The workspace grows as Kuttaka saves methods, checks, and the evidence behind them. Later tasks can retest and reuse that work. On the recorded growth suite, Kuttaka solved 12/12 with memory and 11/12 with a fresh workspace.
-
-Here, self-awareness means recognizing when evidence for an answer is weak or conflicting. Kuttaka can withhold a disputed answer. In the recorded W4-o comparison, Glimmer alone delivered four wrong answers and Glimmer with Kuttaka delivered zero, using different call counts. [See the run evidence](EVIDENCE.md).

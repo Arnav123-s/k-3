@@ -4,7 +4,7 @@
 
 | Time | Segment |
 |---|---|
-| 0:00–0:22 | Introduction |
+| 0:00–0:22 | Introduction and the systematic cognitive substrate description |
 | 0:22–0:44 | Accelerated modular square-root terminal replay |
 | 0:44–0:57 | Drag repair trace and private-case score |
 | 0:57–1:10 | Spark LiveCodeBench checkpoint |
