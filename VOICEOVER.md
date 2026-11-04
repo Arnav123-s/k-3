@@ -1,4 +1,4 @@
-# Kuttaka 3 narration for the 3:07 cut
+# Kuttaka 3 narration for the 2:47 cut
 
 Record one video and read the quoted lines in order. Pause for two seconds between sections. If you miss a line, pause and restart it. Send the original as **NARRATION.mp4**. The timestamps are edit marks. Read at a natural pace.
 
@@ -22,23 +22,19 @@ Record one video and read the quoted lines in order. Pause for two seconds betwe
 
 "Here Glimmer with Kuttaka gets its second solve. Glimmer alone is still at zero. That is ninety-two dispatched calls with Kuttaka and one hundred one alone, at this point in the run."
 
-## 1:30–1:50 | Wonder
-
-"Wonder tells a different story. Both arms reach ten. Wonder alone gets there with fewer calls. The payoff depends on the model and the task."
-
-## 1:50–2:02 | The short results cards
+## 1:30–1:42 | The short results cards
 
 "In our hard development run, Glimmer went from eight solves to twelve with Kuttaka. A separate rescore passed all seventy-nine private cases."
 
-## 2:02–2:32 | The animated results
+## 1:42–2:12 | The animated results
 
 "The hard-suite run took fifty-three model calls with Kuttaka versus twelve alone. In an earlier graded run, the score went from sixteen to eighteen out of eighteen. On a suite where tasks build on each other, Kuttaka with memory solved all twelve. The repository links each result to the run that produced it."
 
-## 2:32–2:52 | The deeper mechanism
+## 2:12–2:32 | The deeper mechanism
 
 "The idea comes from Aryabhata's kuttaka. Break a hard problem into steps you can check. The runtime can retest methods it saved, combine pieces, and return to a weak check when a candidate fails. When a dispute remains, Kuttaka can say it has no verified answer."
 
-## 2:52–3:07 | Close
+## 2:32–2:47 | Close
 
 "Open the Kuttaka 3 repository and follow the judge quickstart. Run the local tests, or bring your own model endpoint and give it a task. You'll see the method and what supports it."
 
