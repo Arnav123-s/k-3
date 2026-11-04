@@ -27,15 +27,14 @@ card('demo-drag-score',7,'02  Physics | Verified result',[
  'The repaired method passed 5 of 5 private cases.',
  '15 model calls for this task.',
  'Source: W4-o console log and per-task report.'])
-card('demo-spark',13,'03  LiveCodeBench | Recorded Spark checkpoint',[
- '15:52:22 UTC  |  November 4, 2026',
+card('demo-spark',13,'03  LiveCodeBench | Largest recorded Kuttaka lead',[
+ '00:19:04 UTC  |  November 4, 2026',
  '',
- 'Spark alone             9 / 12   |   498 calls',
- 'Spark + Kuttaka        10 / 12   |   559 calls',
+ 'Spark alone             6 / 12   |    45 calls',
+ 'Spark + Kuttaka        9 / 12   |    52 calls',
  '',
- 'Snapshot of an in-progress run. Calls dispatched.',
- 'Separate from the Glimmer development suite.'])
+ 'Kuttaka led by 3 solves at this checkpoint.',
+ 'In-progress snapshot. Calls dispatched.'])
 ff('-i','kuttaka3-film.mp4','-i','demo-sqrt.mp4','-i','demo-drag-plan.mp4','-i','demo-drag-score.mp4','-i','demo-spark.mp4',
    '-filter_complex','[0:v]trim=end=22,setpts=PTS-STARTPTS[a];[0:v]trim=start=70,setpts=PTS-STARTPTS[b];[a][1:v][2:v][3:v][4:v][b]concat=n=6:v=1:a=0[v]',
    '-map','[v]','-c:v','libx264','-preset','veryfast','-pix_fmt','yuv420p','-movflags','+faststart','kuttaka3-demo-expanded.mp4')
-

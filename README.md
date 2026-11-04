@@ -20,4 +20,6 @@ The growth comparator is Kuttaka with fresh memory. The hard-suite scorecard com
 - [Independent W4-o rescore](https://github.com/Arnav123-s/kuttaka/blob/32c6f37/results/solve-suite/w4o-glimmer-fresh/rescored.json)
 - [LiveCodeBench checkpoint](https://github.com/Arnav123-s/kuttaka/tree/d905468/results/external/race-snapshot-20261104T155245Z)
 
+The demo shows the largest recorded LiveCodeBench lead for Spark + Kuttaka at 00:19:04 UTC on November 4, 2026. Spark alone had 6/12 verified solves after 45 dispatched calls. Spark + Kuttaka had 9/12 after 52. This is an in-progress checkpoint with different call counts.
+
 [Expanded demo preview](kuttaka3-demo-expanded.mp4) · [Demo timing, narration, and evidence](DEMO_EDIT.md)

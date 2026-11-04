@@ -6,9 +6,9 @@
 |---|---|---|
 | 0:22–0:44 | Accelerated modular square-root terminal replay | Glimmer proposes checks and a method for modular square roots. The saved method passed all eleven private cases in four calls. |
 | 0:44–0:57 | W4-o drag-repair trace summary | A reference and a blind re-derivation both rejected the first drag method. The repaired method passed all five private cases. |
-| 0:57–1:10 | Spark terminal checkpoint as a scorecard | On this LiveCodeBench checkpoint, Spark had nine verified solves alone and ten with Kuttaka. The arms had dispatched 498 and 559 calls. |
+| 0:57–1:10 | Spark's largest recorded lead as a scorecard | At 00:19:04 UTC on November 4, Spark had six verified solves after 45 dispatched calls. Spark with Kuttaka had nine after 52. |
 
-The drag section summarizes the recorded trace, and the Spark section reproduces a recorded checkpoint. The modular square-root replay is the existing terminal rendition. For the owner-recorded Muse Code take, use [RECORD_THIS.md](RECORD_THIS.md).
+The drag section summarizes the recorded trace, and the Spark section shows one checkpoint from the recorded terminal timeline. The largest observed lead was three solves. Among checkpoints tied at that lead, this one had the smallest difference in dispatched calls (seven). The modular square-root replay is the existing terminal rendition. For the owner-recorded Muse Code take, use [RECORD_THIS.md](RECORD_THIS.md).
 
 - [Modular square-root evidence](https://github.com/Arnav123-s/kuttaka/tree/32c6f37/results/demo/2026-11-02-h-m4-sqrtmod)
 - [W4-o repair and scoring evidence](https://github.com/Arnav123-s/kuttaka/blob/32c6f37/results/solve-suite/w4o-glimmer-fresh/FINAL_REPORT.md)
