@@ -4,7 +4,7 @@ K^3 is a model wrapper that proposes checks, runs generated Python inside a pinn
 
 ## Verify locally
 
-Use Python 3.11 or later and a running Docker daemon. From the checkout:
+Use Linux or WSL with Python 3.11 or later and a running Docker daemon. From the checkout:
 
 ```bash
 cd engine
