@@ -1,0 +1,23 @@
+{
+  "stage": 0,
+  "process_id": 53870,
+  "artifact": "0abb34a61f3aaaa95e2cbeef33d1a21481504f034afdbf88f41d2101ebf2d186",
+  "source_sha256": "9c35846efb7c8e4b95b66cd9bb358dc8affc57459f9e9884d195870b54c4eb87",
+  "result": {
+    "status": "paused",
+    "answer": null,
+    "model_calls": 1,
+    "tool_calls": 0,
+    "policy_executions": 1,
+    "steps": 1,
+    "model_input_tokens": 0,
+    "model_output_tokens": 0,
+    "model_tokens_known": true,
+    "reason": "explicit clean-boundary pause"
+  },
+  "new_observation_inputs": [],
+  "representation_revisions": [],
+  "journal_head": "ab4123afa892777a10decb63d61cdb8153adee8f61e3c45b4d7d5b2c54032939",
+  "new_endpoint_calls": 0,
+  "attribution": "unchanged model-acquired policy; authored proposals and final-answer fixture"
+}

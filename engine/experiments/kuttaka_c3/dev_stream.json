@@ -1,0 +1,492 @@
+[
+ {
+  "id": "kal-lex",
+  "chain": "kal",
+  "family": "lang",
+  "level": 1,
+  "role": "base",
+  "needs": [],
+  "request": "Write run(p). p = {\"text\": string}. Split the text into Kal tokens. Kal tokens: an integer literal is a maximal run of decimal digits 0-9; an identifier is a lowercase letter a-z followed by a maximal run of lowercase letters, digits and underscores; the operators + - * / % ^ ( ) are one token each; spaces and tabs separate tokens and are otherwise ignored; any other character makes the text invalid. Return the list of tokens in order, each as [kind, text] with kind \"num\", \"id\" or \"op\" and text the exact characters of the token, or null if the text is invalid.",
+  "checks": [
+   {
+    "input": {
+     "text": "12+x_1*(3-y)"
+    },
+    "expected": [
+     [
+      "num",
+      "12"
+     ],
+     [
+      "op",
+      "+"
+     ],
+     [
+      "id",
+      "x_1"
+     ],
+     [
+      "op",
+      "*"
+     ],
+     [
+      "op",
+      "("
+     ],
+     [
+      "num",
+      "3"
+     ],
+     [
+      "op",
+      "-"
+     ],
+     [
+      "id",
+      "y"
+     ],
+     [
+      "op",
+      ")"
+     ]
+    ]
+   },
+   {
+    "input": {
+     "text": "a1b 007^2"
+    },
+    "expected": [
+     [
+      "id",
+      "a1b"
+     ],
+     [
+      "num",
+      "007"
+     ],
+     [
+      "op",
+      "^"
+     ],
+     [
+      "num",
+      "2"
+     ]
+    ]
+   },
+   {
+    "input": {
+     "text": "2x%y9"
+    },
+    "expected": [
+     [
+      "num",
+      "2"
+     ],
+     [
+      "id",
+      "x"
+     ],
+     [
+      "op",
+      "%"
+     ],
+     [
+      "id",
+      "y9"
+     ]
+    ]
+   },
+   {
+    "input": {
+     "text": "x = 1"
+    },
+    "expected": null
+   }
+  ]
+ },
+ {
+  "id": "kal-rpn",
+  "chain": "kal",
+  "family": "lang",
+  "level": 2,
+  "role": "extend",
+  "needs": [
+   "kal-lex"
+  ],
+  "request": "Write run(p). p = {\"expr\": string}, an infix Kal expression. Convert it to postfix. Kal tokens: an integer literal is a maximal run of decimal digits 0-9; an identifier is a lowercase letter a-z followed by a maximal run of lowercase letters, digits and underscores; the operators + - * / % ^ ( ) are one token each; spaces and tabs separate tokens and are otherwise ignored; any other character makes the text invalid. Conversion to postfix (shunting-yard): a \"-\" is unary minus when it is the first token or follows an operator other than \")\"; otherwise it is binary. Precedence: ^ 4 (right-associative), unary minus 3, * / % 2 (left-associative), + - 1 (left-associative). Read the tokens left to right: append a number or identifier to the output; push a unary minus; push \"(\"; on \")\" pop operators to the output until \"(\" and discard that \"(\" (if there is none the expression is invalid); on a binary operator o first pop to the output every operator on top of the stack (stopping at \"(\") whose precedence is greater than that of o, or equal to it when o is left-associative, then push o. At the end pop every operator to the output; a remaining \"(\" makes the expression invalid. In the output a number keeps its digit text, an identifier its name, a binary operator its symbol, and unary minus is written \"~\". Return the postfix output as a list of strings, or null if the text or the parentheses are invalid. Do no other validation.",
+  "checks": [
+   {
+    "input": {
+     "expr": "1+2*3"
+    },
+    "expected": [
+     "1",
+     "2",
+     "3",
+     "*",
+     "+"
+    ]
+   },
+   {
+    "input": {
+     "expr": "-2^2"
+    },
+    "expected": [
+     "2",
+     "2",
+     "^",
+     "~"
+    ]
+   },
+   {
+    "input": {
+     "expr": "2^3^2-(4-x)"
+    },
+    "expected": [
+     "2",
+     "3",
+     "2",
+     "^",
+     "^",
+     "4",
+     "x",
+     "-",
+     "-"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "kal-eval",
+  "chain": "kal",
+  "family": "lang",
+  "level": 3,
+  "role": "extend",
+  "needs": [
+   "kal-rpn"
+  ],
+  "request": "Write run(p). p = {\"expr\": string, \"env\": object mapping identifiers to integers}. Evaluate the infix Kal expression with the variables in env. Kal tokens: an integer literal is a maximal run of decimal digits 0-9; an identifier is a lowercase letter a-z followed by a maximal run of lowercase letters, digits and underscores; the operators + - * / % ^ ( ) are one token each; spaces and tabs separate tokens and are otherwise ignored; any other character makes the text invalid. Conversion to postfix (shunting-yard): a \"-\" is unary minus when it is the first token or follows an operator other than \")\"; otherwise it is binary. Precedence: ^ 4 (right-associative), unary minus 3, * / % 2 (left-associative), + - 1 (left-associative). Read the tokens left to right: append a number or identifier to the output; push a unary minus; push \"(\"; on \")\" pop operators to the output until \"(\" and discard that \"(\" (if there is none the expression is invalid); on a binary operator o first pop to the output every operator on top of the stack (stopping at \"(\") whose precedence is greater than that of o, or equal to it when o is left-associative, then push o. At the end pop every operator to the output; a remaining \"(\" makes the expression invalid. In the output a number keeps its digit text, an identifier its name, a binary operator its symbol, and unary minus is written \"~\". Evaluate the postfix list with a stack of integers: a number pushes its value; an identifier pushes its value from the variables (a missing identifier is an error); \"~\" negates the top value; a binary operator pops b, then a, and pushes a op b, where + - * are exact, / is the integer quotient truncated toward zero, % is a - b*q with q that truncated quotient, / and % with b = 0 are errors, and ^ is a to the power b, an error when b < 0 (0^0 = 1). Pushing a value whose absolute value exceeds 10^18 is an error. Popping from an empty stack is an error, and the end must leave exactly one value. Return the integer value, or null if the text or the parentheses are invalid or any error occurs.",
+  "checks": [
+   {
+    "input": {
+     "expr": "7/-2",
+     "env": {}
+    },
+    "expected": -3
+   },
+   {
+    "input": {
+     "expr": "x^2 - y%3",
+     "env": {
+      "x": 4,
+      "y": -7
+     }
+    },
+    "expected": 17
+   },
+   {
+    "input": {
+     "expr": "(1+q)*2",
+     "env": {
+      "x": 1
+     }
+    },
+    "expected": null
+   }
+  ]
+ },
+ {
+  "id": "kal-run",
+  "chain": "kal",
+  "family": "lang",
+  "level": 4,
+  "role": "compose",
+  "needs": [
+   "kal-lex",
+   "kal-eval"
+  ],
+  "request": "Write run(p). p = {\"lines\": list of strings, \"env\": object mapping identifiers to integers}. Run a Kal program. Each line must contain exactly one \"=\"; the text left of it must be exactly one identifier token (spaces allowed around it) and the text right of it is an infix Kal expression. Kal tokens: an integer literal is a maximal run of decimal digits 0-9; an identifier is a lowercase letter a-z followed by a maximal run of lowercase letters, digits and underscores; the operators + - * / % ^ ( ) are one token each; spaces and tabs separate tokens and are otherwise ignored; any other character makes the text invalid. Conversion to postfix (shunting-yard): a \"-\" is unary minus when it is the first token or follows an operator other than \")\"; otherwise it is binary. Precedence: ^ 4 (right-associative), unary minus 3, * / % 2 (left-associative), + - 1 (left-associative). Read the tokens left to right: append a number or identifier to the output; push a unary minus; push \"(\"; on \")\" pop operators to the output until \"(\" and discard that \"(\" (if there is none the expression is invalid); on a binary operator o first pop to the output every operator on top of the stack (stopping at \"(\") whose precedence is greater than that of o, or equal to it when o is left-associative, then push o. At the end pop every operator to the output; a remaining \"(\" makes the expression invalid. In the output a number keeps its digit text, an identifier its name, a binary operator its symbol, and unary minus is written \"~\". Evaluate the postfix list with a stack of integers: a number pushes its value; an identifier pushes its value from the variables (a missing identifier is an error); \"~\" negates the top value; a binary operator pops b, then a, and pushes a op b, where + - * are exact, / is the integer quotient truncated toward zero, % is a - b*q with q that truncated quotient, / and % with b = 0 are errors, and ^ is a to the power b, an error when b < 0 (0^0 = 1). Pushing a value whose absolute value exceeds 10^18 is an error. Popping from an empty stack is an error, and the end must leave exactly one value. The lines run in order, starting from a copy of env: each expression is evaluated with the current variables and its value is assigned to the identifier. Return {\"env\": the final variables, including unchanged ones} if every line succeeds; otherwise return {\"error_line\": i} with i the 0-based index of the first line that is malformed or whose expression is invalid or has an error.",
+  "checks": [
+   {
+    "input": {
+     "lines": [
+      "a = 3",
+      "b = a*a - 1",
+      "a = b/a"
+     ],
+     "env": {}
+    },
+    "expected": {
+     "env": {
+      "a": 2,
+      "b": 8
+     }
+    }
+   },
+   {
+    "input": {
+     "lines": [
+      "x = 2^10",
+      "y = x % 7",
+      "z = y / 0"
+     ],
+     "env": {
+      "w": 1
+     }
+    },
+    "expected": {
+     "error_line": 2
+    }
+   },
+   {
+    "input": {
+     "lines": [
+      "n = -n",
+      "2 = n"
+     ],
+     "env": {
+      "n": 5
+     }
+    },
+    "expected": {
+     "error_line": 1
+    }
+   }
+  ]
+ },
+ {
+  "id": "kal-script",
+  "chain": "kal",
+  "family": "lang",
+  "level": 5,
+  "role": "variant",
+  "needs": [
+   "kal-run"
+  ],
+  "request": "Write run(p). p = {\"script\": string, \"vars\": list of [identifier, integer] pairs}. Run a Kal script and report its variables. The initial variables come from vars, a later pair replacing an earlier one with the same name. The script is split at every \";\" into lines (an empty line is malformed). Each line must contain exactly one \"=\"; the text left of it must be exactly one identifier token (spaces allowed around it) and the text right of it is an infix Kal expression. Kal tokens: an integer literal is a maximal run of decimal digits 0-9; an identifier is a lowercase letter a-z followed by a maximal run of lowercase letters, digits and underscores; the operators + - * / % ^ ( ) are one token each; spaces and tabs separate tokens and are otherwise ignored; any other character makes the text invalid. Conversion to postfix (shunting-yard): a \"-\" is unary minus when it is the first token or follows an operator other than \")\"; otherwise it is binary. Precedence: ^ 4 (right-associative), unary minus 3, * / % 2 (left-associative), + - 1 (left-associative). Read the tokens left to right: append a number or identifier to the output; push a unary minus; push \"(\"; on \")\" pop operators to the output until \"(\" and discard that \"(\" (if there is none the expression is invalid); on a binary operator o first pop to the output every operator on top of the stack (stopping at \"(\") whose precedence is greater than that of o, or equal to it when o is left-associative, then push o. At the end pop every operator to the output; a remaining \"(\" makes the expression invalid. In the output a number keeps its digit text, an identifier its name, a binary operator its symbol, and unary minus is written \"~\". Evaluate the postfix list with a stack of integers: a number pushes its value; an identifier pushes its value from the variables (a missing identifier is an error); \"~\" negates the top value; a binary operator pops b, then a, and pushes a op b, where + - * are exact, / is the integer quotient truncated toward zero, % is a - b*q with q that truncated quotient, / and % with b = 0 are errors, and ^ is a to the power b, an error when b < 0 (0^0 = 1). Pushing a value whose absolute value exceeds 10^18 is an error. Popping from an empty stack is an error, and the end must leave exactly one value. The lines run in order: each expression is evaluated with the current variables and its value is assigned to the identifier. If every line succeeds, return a list of strings \"name=value\" (value in decimal) for all final variables, sorted by name in character-code order; otherwise return the string \"error on line N\" with N the 1-based number of the first line that is malformed or whose expression is invalid or has an error.",
+  "checks": [
+   {
+    "input": {
+     "script": "a = 3; b = a*a - 1; a = b/a",
+     "vars": []
+    },
+    "expected": [
+     "a=2",
+     "b=8"
+    ]
+   },
+   {
+    "input": {
+     "script": "x = 2^10;y = x % 7;z = y/0",
+     "vars": [
+      [
+       "w",
+       1
+      ]
+     ]
+    },
+    "expected": "error on line 3"
+   },
+   {
+    "input": {
+     "script": "n = -n",
+     "vars": [
+      [
+       "n",
+       5
+      ],
+      [
+       "n",
+       6
+      ]
+     ]
+    },
+    "expected": [
+     "n=-6"
+    ]
+   }
+  ],
+  "target": "kal-run"
+ },
+ {
+  "id": "meru-ord",
+  "chain": "meru",
+  "family": "calendar",
+  "level": 1,
+  "role": "base",
+  "needs": [],
+  "request": "Write run(p). p = {\"y\", \"m\", \"d\"}: integer year, month and day. The Meru calendar: years are numbered from 1 and have 12 months. Months 1 to 11 have 30 days; month 12 has 35 days, or 36 in a leap year. A year is a leap year when it is divisible by 5, except that a year divisible by 30 is a leap year only when it is also divisible by 150. Day number 0 is year 1, month 1, day 1, and day numbers count consecutive days from there. A date {y, m, d} exists when y >= 1, 1 <= m <= 12 and 1 <= d <= the length of month m in year y. Return the day number of the date, or null if the date does not exist.",
+  "checks": [
+   {
+    "input": {
+     "y": 1,
+     "m": 1,
+     "d": 1
+    },
+    "expected": 0
+   },
+   {
+    "input": {
+     "y": 5,
+     "m": 12,
+     "d": 36
+    },
+    "expected": 1825
+   },
+   {
+    "input": {
+     "y": 30,
+     "m": 12,
+     "d": 36
+    },
+    "expected": null
+   },
+   {
+    "input": {
+     "y": 150,
+     "m": 12,
+     "d": 36
+    },
+    "expected": 54775
+   }
+  ]
+ },
+ {
+  "id": "meru-weekday",
+  "chain": "meru",
+  "family": "calendar",
+  "level": 2,
+  "role": "extend",
+  "needs": [
+   "meru-ord"
+  ],
+  "request": "Write run(p). p = {\"y\", \"m\", \"d\"}: integer year, month and day. The Meru calendar: years are numbered from 1 and have 12 months. Months 1 to 11 have 30 days; month 12 has 35 days, or 36 in a leap year. A year is a leap year when it is divisible by 5, except that a year divisible by 30 is a leap year only when it is also divisible by 150. Day number 0 is year 1, month 1, day 1, and day numbers count consecutive days from there. The Meru week has 6 days in the order Ash, Bel, Cor, Dun, Eld, Fen; day number 0 is a Cor. A date {y, m, d} exists when y >= 1, 1 <= m <= 12 and 1 <= d <= the length of month m in year y. Return the weekday name of the date as a string, or null if the date does not exist.",
+  "checks": [
+   {
+    "input": {
+     "y": 1,
+     "m": 1,
+     "d": 1
+    },
+    "expected": "Cor"
+   },
+   {
+    "input": {
+     "y": 5,
+     "m": 12,
+     "d": 36
+    },
+    "expected": "Dun"
+   },
+   {
+    "input": {
+     "y": 2,
+     "m": 2,
+     "d": 31
+    },
+    "expected": null
+   }
+  ]
+ },
+ {
+  "id": "meru-market",
+  "chain": "meru",
+  "family": "calendar",
+  "level": 3,
+  "role": "compose",
+  "needs": [
+   "meru-ord",
+   "meru-weekday"
+  ],
+  "request": "Write run(p). p = {\"y\", \"m\"}: integer year and month. The Meru calendar: years are numbered from 1 and have 12 months. Months 1 to 11 have 30 days; month 12 has 35 days, or 36 in a leap year. A year is a leap year when it is divisible by 5, except that a year divisible by 30 is a leap year only when it is also divisible by 150. Day number 0 is year 1, month 1, day 1, and day numbers count consecutive days from there. The Meru week has 6 days in the order Ash, Bel, Cor, Dun, Eld, Fen; day number 0 is a Cor. A market day is a day whose weekday is Bel or Dun, except the two festival days of every year, which are never market days: day 1 of month 7 and the last day of month 12. Return the list of the day-of-month numbers of the market days in month m of year y, in increasing order, or null if y < 1 or m is not 1 to 12.",
+  "checks": [
+   {
+    "input": {
+     "y": 1,
+     "m": 1
+    },
+    "expected": [
+     2,
+     6,
+     8,
+     12,
+     14,
+     18,
+     20,
+     24,
+     26,
+     30
+    ]
+   },
+   {
+    "input": {
+     "y": 7,
+     "m": 12
+    },
+    "expected": [
+     1,
+     5,
+     7,
+     11,
+     13,
+     17,
+     19,
+     23,
+     25,
+     29,
+     31
+    ]
+   },
+   {
+    "input": {
+     "y": 2,
+     "m": 7
+    },
+    "expected": [
+     3,
+     7,
+     9,
+     13,
+     15,
+     19,
+     21,
+     25,
+     27
+    ]
+   }
+  ]
+ },
+ {
+  "id": "meru-text",
+  "chain": "meru",
+  "family": "calendar",
+  "level": 4,
+  "role": "variant",
+  "needs": [
+   "meru-market"
+  ],
+  "request": "Write run(p). p = {\"month\": \"Y-M\"}, a string of two non-negative decimal integers joined by \"-\": a year Y and a month M. The Meru calendar: years are numbered from 1 and have 12 months. Months 1 to 11 have 30 days; month 12 has 35 days, or 36 in a leap year. A year is a leap year when it is divisible by 5, except that a year divisible by 30 is a leap year only when it is also divisible by 150. Day number 0 is year 1, month 1, day 1, and day numbers count consecutive days from there. The Meru week has 6 days in the order Ash, Bel, Cor, Dun, Eld, Fen; day number 0 is a Cor. A market day is a day whose weekday is Bel or Dun, except the two festival days of every year, which are never market days: day 1 of month 7 and the last day of month 12. Return one string that lists the market days of month M of year Y in increasing order, each written \"Y-M-D\" in decimal without padding, joined by \",\"; return the string \"invalid\" if Y < 1 or M is not 1 to 12.",
+  "checks": [
+   {
+    "input": {
+     "month": "2-7"
+    },
+    "expected": "2-7-3,2-7-7,2-7-9,2-7-13,2-7-15,2-7-19,2-7-21,2-7-25,2-7-27"
+   },
+   {
+    "input": {
+     "month": "4-12"
+    },
+    "expected": "4-12-3,4-12-5,4-12-9,4-12-11,4-12-15,4-12-17,4-12-21,4-12-23,4-12-27,4-12-29,4-12-33"
+   },
+   {
+    "input": {
+     "month": "3-13"
+    },
+    "expected": "invalid"
+   }
+  ],
+  "target": "meru-market"
+ }
+]

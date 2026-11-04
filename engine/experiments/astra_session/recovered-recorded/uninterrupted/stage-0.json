@@ -1,0 +1,72 @@
+{
+  "stage": 0,
+  "process_id": 52968,
+  "artifact": "0abb34a61f3aaaa95e2cbeef33d1a21481504f034afdbf88f41d2101ebf2d186",
+  "source_sha256": "9c35846efb7c8e4b95b66cd9bb358dc8affc57459f9e9884d195870b54c4eb87",
+  "result": {
+    "status": "checked",
+    "answer": [
+      2,
+      4,
+      6
+    ],
+    "model_calls": 4,
+    "tool_calls": 4,
+    "policy_executions": 10,
+    "steps": 10,
+    "model_input_tokens": 0,
+    "model_output_tokens": 0,
+    "model_tokens_known": true,
+    "reason": "accepted by supplied development checker"
+  },
+  "new_observation_inputs": [
+    1,
+    2,
+    4
+  ],
+  "representation_revisions": [
+    {
+      "after": {
+        "hypothesis_stats": {
+          "reading equals twice x": {
+            "hits": 2,
+            "misses": 0,
+            "total": 2
+          }
+        },
+        "supported_hypotheses": [
+          "reading equals twice x"
+        ]
+      },
+      "before": null,
+      "reason": "hypothesis evidence updated from prediction-observation matches"
+    },
+    {
+      "after": {
+        "hypothesis_stats": {
+          "reading equals twice x": {
+            "hits": 2,
+            "misses": 1,
+            "total": 3
+          }
+        }
+      },
+      "before": {
+        "hypothesis_stats": {
+          "reading equals twice x": {
+            "hits": 2,
+            "misses": 0,
+            "total": 2
+          }
+        },
+        "supported_hypotheses": [
+          "reading equals twice x"
+        ]
+      },
+      "reason": "hypothesis evidence updated from prediction-observation matches"
+    }
+  ],
+  "journal_head": "c588302545bc83889e97b24e818ca5cfaf7bc6c7003ade2d9f810f50a34e3465",
+  "new_endpoint_calls": 0,
+  "attribution": "unchanged model-acquired policy; authored proposals and final-answer fixture"
+}

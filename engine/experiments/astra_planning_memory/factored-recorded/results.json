@@ -1,0 +1,52 @@
+{
+  "audit": {
+    "class_counts": [
+      2,
+      4,
+      4
+    ],
+    "source_states": 4,
+    "retained_states": 4,
+    "source_json_bytes": 503,
+    "quotient_json_bytes": 727,
+    "encoder_json_bytes": 37,
+    "scope": "complete supplied deterministic model only; truth of model is not certified",
+    "source_variables": 1000,
+    "retained_variables": [
+      "door",
+      "key"
+    ],
+    "eliminated_variables": 998,
+    "source_state_count_power_of_two": 1000,
+    "enumerated_projected_states": 4,
+    "source_spec_bytes": 81642,
+    "source_spec_digest": "8857cbd1095441acbc4cfd39f0d43b9472fb6fa3b08cfb890a2e1bd458aa3f51",
+    "rule": "syntactic dependency closure; conservative, not minimal variable selection"
+  },
+  "plan": {
+    "status": "plan",
+    "actions": [
+      "collect",
+      "open"
+    ],
+    "cost": 3,
+    "terminal": "2",
+    "expanded": 3
+  },
+  "deployed_json_bytes": 829,
+  "implementation": {
+    "kuttaka_runtime/factored_memory.py": {
+      "bytes": 5288,
+      "sha256": "e34bf2eec285ee53caf9ae84b3fb5f5f7e833e74131e9748d908dd5b949268a1"
+    },
+    "kuttaka_runtime/planning_memory.py": {
+      "bytes": 8776,
+      "sha256": "162fd2ebd3950f139405fad1d5bf8cc68c491d101ff43be84785571f6a1fd861"
+    },
+    "kuttaka_runtime/query_memory.py": {
+      "bytes": 17811,
+      "sha256": "4f9f6360b0174b742c7c14db43fc5468e6a095329c798d2bd9907bda3740473e"
+    }
+  },
+  "scope": "engineered Boolean projection on authored complete model, not discovered world structure"
+}

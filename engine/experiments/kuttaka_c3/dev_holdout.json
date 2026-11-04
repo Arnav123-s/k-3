@@ -1,0 +1,705 @@
+{
+ "kal-lex": [
+  {
+   "input": {
+    "text": ""
+   },
+   "expected": []
+  },
+  {
+   "input": {
+    "text": "Ab"
+   },
+   "expected": null
+  },
+  {
+   "input": {
+    "text": "_a"
+   },
+   "expected": null
+  },
+  {
+   "input": {
+    "text": "a__b9 3"
+   },
+   "expected": [
+    [
+     "id",
+     "a__b9"
+    ],
+    [
+     "num",
+     "3"
+    ]
+   ]
+  },
+  {
+   "input": {
+    "text": "((1))/z"
+   },
+   "expected": [
+    [
+     "op",
+     "("
+    ],
+    [
+     "op",
+     "("
+    ],
+    [
+     "num",
+     "1"
+    ],
+    [
+     "op",
+     ")"
+    ],
+    [
+     "op",
+     ")"
+    ],
+    [
+     "op",
+     "/"
+    ],
+    [
+     "id",
+     "z"
+    ]
+   ]
+  },
+  {
+   "input": {
+    "text": "4 \t 5"
+   },
+   "expected": [
+    [
+     "num",
+     "4"
+    ],
+    [
+     "num",
+     "5"
+    ]
+   ]
+  },
+  {
+   "input": {
+    "text": "9.5"
+   },
+   "expected": null
+  }
+ ],
+ "kal-rpn": [
+  {
+   "input": {
+    "expr": "2*-3"
+   },
+   "expected": [
+    "2",
+    "3",
+    "~",
+    "*"
+   ]
+  },
+  {
+   "input": {
+    "expr": "-3*2"
+   },
+   "expected": [
+    "3",
+    "~",
+    "2",
+    "*"
+   ]
+  },
+  {
+   "input": {
+    "expr": "(1+2"
+   },
+   "expected": null
+  },
+  {
+   "input": {
+    "expr": "1+2)"
+   },
+   "expected": null
+  },
+  {
+   "input": {
+    "expr": "a-b-c"
+   },
+   "expected": [
+    "a",
+    "b",
+    "-",
+    "c",
+    "-"
+   ]
+  },
+  {
+   "input": {
+    "expr": "2^-1"
+   },
+   "expected": [
+    "2",
+    "1",
+    "~",
+    "^"
+   ]
+  },
+  {
+   "input": {
+    "expr": "--x_2"
+   },
+   "expected": [
+    "x_2",
+    "~",
+    "~"
+   ]
+  },
+  {
+   "input": {
+    "expr": "7%3/2"
+   },
+   "expected": [
+    "7",
+    "3",
+    "%",
+    "2",
+    "/"
+   ]
+  },
+  {
+   "input": {
+    "expr": "1 # 2"
+   },
+   "expected": null
+  }
+ ],
+ "kal-eval": [
+  {
+   "input": {
+    "expr": "-2^2",
+    "env": {}
+   },
+   "expected": -4
+  },
+  {
+   "input": {
+    "expr": "2^-1",
+    "env": {}
+   },
+   "expected": null
+  },
+  {
+   "input": {
+    "expr": "10/0",
+    "env": {}
+   },
+   "expected": null
+  },
+  {
+   "input": {
+    "expr": "2^62",
+    "env": {}
+   },
+   "expected": null
+  },
+  {
+   "input": {
+    "expr": "10^18",
+    "env": {}
+   },
+   "expected": 1000000000000000000
+  },
+  {
+   "input": {
+    "expr": "-7/2+7%-3",
+    "env": {}
+   },
+   "expected": -2
+  },
+  {
+   "input": {
+    "expr": "a b",
+    "env": {
+     "a": 1,
+     "b": 2
+    }
+   },
+   "expected": null
+  },
+  {
+   "input": {
+    "expr": "1+",
+    "env": {}
+   },
+   "expected": null
+  },
+  {
+   "input": {
+    "expr": "0^0",
+    "env": {}
+   },
+   "expected": 1
+  },
+  {
+   "input": {
+    "expr": "x_1*3",
+    "env": {
+     "x_1": 5
+    }
+   },
+   "expected": 15
+  }
+ ],
+ "kal-run": [
+  {
+   "input": {
+    "lines": [],
+    "env": {
+     "k": 1
+    }
+   },
+   "expected": {
+    "env": {
+     "k": 1
+    }
+   }
+  },
+  {
+   "input": {
+    "lines": [
+     "a == 1"
+    ],
+    "env": {}
+   },
+   "expected": {
+    "error_line": 0
+   }
+  },
+  {
+   "input": {
+    "lines": [
+     "a b = 1"
+    ],
+    "env": {}
+   },
+   "expected": {
+    "error_line": 0
+   }
+  },
+  {
+   "input": {
+    "lines": [
+     " t_2 = 7%-3 ",
+     "u = t_2^3"
+    ],
+    "env": {}
+   },
+   "expected": {
+    "env": {
+     "t_2": 1,
+     "u": 1
+    }
+   }
+  },
+  {
+   "input": {
+    "lines": [
+     "v = 1",
+     "w = q"
+    ],
+    "env": {}
+   },
+   "expected": {
+    "error_line": 1
+   }
+  },
+  {
+   "input": {
+    "lines": [
+     "big = 10^9",
+     "big = big*big",
+     "big = big*10"
+    ],
+    "env": {}
+   },
+   "expected": {
+    "error_line": 2
+   }
+  },
+  {
+   "input": {
+    "lines": [
+     "m = -2^2",
+     "m = m - -m"
+    ],
+    "env": {}
+   },
+   "expected": {
+    "env": {
+     "m": -8
+    }
+   }
+  }
+ ],
+ "kal-script": [
+  {
+   "input": {
+    "script": "",
+    "vars": [
+     [
+      "k",
+      1
+     ]
+    ]
+   },
+   "expected": "error on line 1"
+  },
+  {
+   "input": {
+    "script": "a=1;",
+    "vars": []
+   },
+   "expected": "error on line 2"
+  },
+  {
+   "input": {
+    "script": "p = 7/-2; q = p%2",
+    "vars": []
+   },
+   "expected": [
+    "p=-3",
+    "q=-1"
+   ]
+  },
+  {
+   "input": {
+    "script": "z = 2^62",
+    "vars": []
+   },
+   "expected": "error on line 1"
+  },
+  {
+   "input": {
+    "script": "b = a",
+    "vars": [
+     [
+      "a",
+      -4
+     ]
+    ]
+   },
+   "expected": [
+    "a=-4",
+    "b=-4"
+   ]
+  },
+  {
+   "input": {
+    "script": "c1 = 0^0; c2 = -c1^2",
+    "vars": []
+   },
+   "expected": [
+    "c1=1",
+    "c2=-1"
+   ]
+  }
+ ],
+ "meru-ord": [
+  {
+   "input": {
+    "y": 6,
+    "m": 1,
+    "d": 1
+   },
+   "expected": 1826
+  },
+  {
+   "input": {
+    "y": 60,
+    "m": 12,
+    "d": 36
+   },
+   "expected": null
+  },
+  {
+   "input": {
+    "y": 300,
+    "m": 12,
+    "d": 36
+   },
+   "expected": 109551
+  },
+  {
+   "input": {
+    "y": 0,
+    "m": 1,
+    "d": 1
+   },
+   "expected": null
+  },
+  {
+   "input": {
+    "y": 1999,
+    "m": 7,
+    "d": 30
+   },
+   "expected": 729825
+  },
+  {
+   "input": {
+    "y": 12,
+    "m": 11,
+    "d": 31
+   },
+   "expected": null
+  },
+  {
+   "input": {
+    "y": 12,
+    "m": 13,
+    "d": 1
+   },
+   "expected": null
+  },
+  {
+   "input": {
+    "y": 31,
+    "m": 1,
+    "d": 1
+   },
+   "expected": 10955
+  }
+ ],
+ "meru-weekday": [
+  {
+   "input": {
+    "y": 30,
+    "m": 12,
+    "d": 35
+   },
+   "expected": "Ash"
+  },
+  {
+   "input": {
+    "y": 30,
+    "m": 12,
+    "d": 36
+   },
+   "expected": null
+  },
+  {
+   "input": {
+    "y": 150,
+    "m": 12,
+    "d": 36
+   },
+   "expected": "Dun"
+  },
+  {
+   "input": {
+    "y": 151,
+    "m": 1,
+    "d": 1
+   },
+   "expected": "Eld"
+  },
+  {
+   "input": {
+    "y": 7,
+    "m": 0,
+    "d": 3
+   },
+   "expected": null
+  },
+  {
+   "input": {
+    "y": 1000,
+    "m": 6,
+    "d": 15
+   },
+   "expected": "Fen"
+  },
+  {
+   "input": {
+    "y": 61,
+    "m": 1,
+    "d": 1
+   },
+   "expected": "Ash"
+  }
+ ],
+ "meru-market": [
+  {
+   "input": {
+    "y": 30,
+    "m": 12
+   },
+   "expected": [
+    2,
+    6,
+    8,
+    12,
+    14,
+    18,
+    20,
+    24,
+    26,
+    30,
+    32
+   ]
+  },
+  {
+   "input": {
+    "y": 150,
+    "m": 12
+   },
+   "expected": [
+    4,
+    6,
+    10,
+    12,
+    16,
+    18,
+    22,
+    24,
+    28,
+    30,
+    34
+   ]
+  },
+  {
+   "input": {
+    "y": 300,
+    "m": 7
+   },
+   "expected": [
+    2,
+    4,
+    8,
+    10,
+    14,
+    16,
+    20,
+    22,
+    26,
+    28
+   ]
+  },
+  {
+   "input": {
+    "y": 7,
+    "m": 13
+   },
+   "expected": null
+  },
+  {
+   "input": {
+    "y": 0,
+    "m": 1
+   },
+   "expected": null
+  },
+  {
+   "input": {
+    "y": 1234,
+    "m": 5
+   },
+   "expected": [
+    2,
+    6,
+    8,
+    12,
+    14,
+    18,
+    20,
+    24,
+    26,
+    30
+   ]
+  },
+  {
+   "input": {
+    "y": 31,
+    "m": 7
+   },
+   "expected": [
+    3,
+    7,
+    9,
+    13,
+    15,
+    19,
+    21,
+    25,
+    27
+   ]
+  },
+  {
+   "input": {
+    "y": 15,
+    "m": 12
+   },
+   "expected": [
+    2,
+    6,
+    8,
+    12,
+    14,
+    18,
+    20,
+    24,
+    26,
+    30,
+    32
+   ]
+  }
+ ],
+ "meru-text": [
+  {
+   "input": {
+    "month": "30-12"
+   },
+   "expected": "30-12-2,30-12-6,30-12-8,30-12-12,30-12-14,30-12-18,30-12-20,30-12-24,30-12-26,30-12-30,30-12-32"
+  },
+  {
+   "input": {
+    "month": "150-12"
+   },
+   "expected": "150-12-4,150-12-6,150-12-10,150-12-12,150-12-16,150-12-18,150-12-22,150-12-24,150-12-28,150-12-30,150-12-34"
+  },
+  {
+   "input": {
+    "month": "0-4"
+   },
+   "expected": "invalid"
+  },
+  {
+   "input": {
+    "month": "300-7"
+   },
+   "expected": "300-7-2,300-7-4,300-7-8,300-7-10,300-7-14,300-7-16,300-7-20,300-7-22,300-7-26,300-7-28"
+  },
+  {
+   "input": {
+    "month": "61-2"
+   },
+   "expected": "61-2-2,61-2-4,61-2-8,61-2-10,61-2-14,61-2-16,61-2-20,61-2-22,61-2-26,61-2-28"
+  },
+  {
+   "input": {
+    "month": "1234-5"
+   },
+   "expected": "1234-5-2,1234-5-6,1234-5-8,1234-5-12,1234-5-14,1234-5-18,1234-5-20,1234-5-24,1234-5-26,1234-5-30"
+  },
+  {
+   "input": {
+    "month": "36-7"
+   },
+   "expected": "36-7-5,36-7-7,36-7-11,36-7-13,36-7-17,36-7-19,36-7-23,36-7-25,36-7-29"
+  }
+ ]
+}

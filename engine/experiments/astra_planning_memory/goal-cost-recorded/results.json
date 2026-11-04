@@ -1,0 +1,53 @@
+{
+  "behavior_control": {
+    "status": "incomplete",
+    "reason": "relevant-variable ceiling reached; no exact memory produced"
+  },
+  "goal_cost_audit": {
+    "class_counts": [
+      2,
+      4,
+      4
+    ],
+    "source_states": 4,
+    "retained_states": 4,
+    "source_json_bytes": 387,
+    "quotient_json_bytes": 666,
+    "encoder_json_bytes": 37,
+    "scope": "complete supplied deterministic model only; truth of model is not certified",
+    "preservation": "goal_cost",
+    "retained_actions": [
+      "collect",
+      "open"
+    ],
+    "removed_actions": [
+      "noise"
+    ],
+    "source_variables": 1000,
+    "retained_variables": [
+      "door",
+      "key"
+    ],
+    "eliminated_variables": 998,
+    "source_state_count_power_of_two": 1000,
+    "enumerated_projected_states": 4,
+    "source_spec_bytes": 55572,
+    "source_spec_digest": "0a3dbbd33697a8e14fff8ac00af8bcf4c32b97454b3392803b0a593fdf05179c",
+    "rule": "syntactic dependency closure; conservative, not minimal variable selection"
+  },
+  "plan": {
+    "status": "plan",
+    "actions": [
+      "collect",
+      "open"
+    ],
+    "cost": 3,
+    "terminal": "2",
+    "expanded": 3
+  },
+  "concrete_execution_checked": true,
+  "deployed_bytes": 756,
+  "implementation_sha256": "f8597bfae80cd9928b21510e90788c1a5f5a2274d2f815427e7e1bb9e3e161c7",
+  "implementation_bytes": 6321,
+  "scope": "known complete model; engineered relevance pruning; not preserved full behavior"
+}

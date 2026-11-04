@@ -1,0 +1,66 @@
+{
+  "stage": 2,
+  "process_id": 54366,
+  "artifact": "0abb34a61f3aaaa95e2cbeef33d1a21481504f034afdbf88f41d2101ebf2d186",
+  "source_sha256": "9c35846efb7c8e4b95b66cd9bb358dc8affc57459f9e9884d195870b54c4eb87",
+  "result": {
+    "status": "paused",
+    "answer": null,
+    "model_calls": 3,
+    "tool_calls": 3,
+    "policy_executions": 8,
+    "steps": 8,
+    "model_input_tokens": 0,
+    "model_output_tokens": 0,
+    "model_tokens_known": true,
+    "reason": "explicit clean-boundary pause"
+  },
+  "new_observation_inputs": [
+    4
+  ],
+  "representation_revisions": [
+    {
+      "after": {
+        "hypothesis_stats": {
+          "reading equals twice x": {
+            "hits": 2,
+            "misses": 0,
+            "total": 2
+          }
+        },
+        "supported_hypotheses": [
+          "reading equals twice x"
+        ]
+      },
+      "before": null,
+      "reason": "hypothesis evidence updated from prediction-observation matches"
+    },
+    {
+      "after": {
+        "hypothesis_stats": {
+          "reading equals twice x": {
+            "hits": 2,
+            "misses": 1,
+            "total": 3
+          }
+        }
+      },
+      "before": {
+        "hypothesis_stats": {
+          "reading equals twice x": {
+            "hits": 2,
+            "misses": 0,
+            "total": 2
+          }
+        },
+        "supported_hypotheses": [
+          "reading equals twice x"
+        ]
+      },
+      "reason": "hypothesis evidence updated from prediction-observation matches"
+    }
+  ],
+  "journal_head": "d47896211eeec474a6a7aad4c13db86931fbf0264749c4b1082283b43043d816",
+  "new_endpoint_calls": 0,
+  "attribution": "unchanged model-acquired policy; authored proposals and final-answer fixture"
+}

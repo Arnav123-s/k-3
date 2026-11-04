@@ -1,0 +1,110 @@
+[
+ {
+  "id": "m1-gcd",
+  "domain": "math",
+  "level": 1,
+  "prompt": "run(input) receives {\"a\": int, \"b\": int} and returns their greatest common divisor as a non-negative int (gcd(0, 0) is 0)."
+ },
+ {
+  "id": "c1-words",
+  "domain": "code",
+  "level": 1,
+  "prompt": "run(input) receives {\"text\": str} and returns the words in reverse order joined by single spaces, ignoring extra whitespace."
+ },
+ {
+  "id": "r1-projectile",
+  "domain": "robot",
+  "level": 1,
+  "prompt": "run(input) receives {\"speed\": m/s, \"angle_deg\": degrees} for a projectile launched from flat ground with g = 9.81 m/s^2 and no air resistance, and returns its horizontal range in metres rounded to 3 decimals."
+ },
+ {
+  "id": "m2-modinv",
+  "domain": "math",
+  "level": 2,
+  "prompt": "run(input) receives {\"a\": int, \"m\": int >= 2} and returns the inverse of a modulo m in the range 0..m-1, or null if it does not exist."
+ },
+ {
+  "id": "c2-intervals",
+  "domain": "code",
+  "level": 2,
+  "prompt": "run(input) receives {\"intervals\": [[start, end], ...]} with integer start <= end, and returns the merged list of overlapping or touching intervals, sorted by start."
+ },
+ {
+  "id": "r2-kinematics",
+  "domain": "robot",
+  "level": 2,
+  "prompt": "run(input) receives {\"v0\": initial velocity, \"segments\": [[acceleration, duration], ...]} for a cart on a straight line starting at position 0, each segment holding a constant acceleration, and returns [final position, final velocity], each rounded to 3 decimals."
+ },
+ {
+  "id": "m3-kuttaka",
+  "domain": "math",
+  "level": 3,
+  "prompt": "Aryabhata's kuttaka: run(input) receives {\"a\": positive int, \"b\": positive int, \"c\": int} and returns [x, y], the integer solution of a*x - b*y = c with the smallest x >= 0, or null if there is none."
+ },
+ {
+  "id": "c3-brackets",
+  "domain": "code",
+  "level": 3,
+  "prompt": "run(input) receives {\"text\": str} and checks (), [] and {} nesting, ignoring other characters. Return -1 if balanced; otherwise the index of the first closing bracket that does not match, or if none, the index of the earliest opening bracket left unclosed."
+ },
+ {
+  "id": "r3-odometry",
+  "domain": "robot",
+  "level": 3,
+  "prompt": "A differential-drive robot starts at x = 0, y = 0, heading 0 rad. run(input) receives {\"wheelbase\": metres, \"commands\": [[v_left, v_right, dt], ...]} with wheel speeds held constant for dt seconds each; integrate the motion exactly (straight line when the speeds are equal, circular arc otherwise) and return [x, y, heading] with heading normalised to (-pi, pi], each rounded to 4 decimals."
+ },
+ {
+  "id": "m4-crt",
+  "domain": "math",
+  "level": 4,
+  "prompt": "run(input) receives {\"congruences\": [[r, m], ...]} with moduli m >= 1 that need not be coprime, and returns the smallest non-negative x with x = r (mod m) for all of them, or null if they are inconsistent."
+ },
+ {
+  "id": "c4-evaluate",
+  "domain": "code",
+  "level": 4,
+  "prompt": "run(input) receives {\"expr\": str}, an integer arithmetic expression with + - * /, parentheses, unary minus and spaces, and returns its int value with the usual precedence, left-to-right association, and division that truncates toward zero. Do not use eval."
+ },
+ {
+  "id": "r4-grid",
+  "domain": "robot",
+  "level": 4,
+  "prompt": "run(input) receives {\"grid\": [str, ...], \"start\": [row, col], \"goal\": [row, col]} where \".\" is free and \"#\" is a wall; the robot moves one cell up, down, left or right. Return the fewest moves from start to goal, or -1 if unreachable."
+ },
+ {
+  "id": "m5-pell",
+  "domain": "math",
+  "level": 5,
+  "prompt": "run(input) receives {\"d\": positive int that is not a perfect square, at most 1000} and returns [x, y], the smallest positive integer solution of Pell's equation x^2 - d*y^2 = 1 (exact big integers)."
+ },
+ {
+  "id": "c5-machine",
+  "domain": "code",
+  "level": 5,
+  "prompt": "run(input) receives {\"program\": [str, ...]} for a stack machine with instructions: push N, pop, dup, swap, add, sub, mul (pop b then a, push a op b), print (append the top value to the output without popping), label NAME, jmp NAME, jz NAME (pop; jump if it was 0). Execute from the first line; label is a no-op. Stop when execution runs past the last line, returning {\"output\": [...], \"halted\": true}, or after 1000 executed instructions, returning {\"output\": [...], \"halted\": false}."
+ },
+ {
+  "id": "r5-visit",
+  "domain": "robot",
+  "level": 5,
+  "prompt": "run(input) receives {\"grid\": [str, ...], \"start\": [row, col], \"targets\": [[row, col], ...]} (at most 7 targets) with \".\" free and \"#\" walls and 4-directional moves. Return the fewest total moves for the robot to visit every target in any order (it need not return), or -1 if some target is unreachable."
+ },
+ {
+  "id": "m6-strings",
+  "domain": "math",
+  "level": 6,
+  "prompt": "run(input) receives {\"n\": int, 0 <= n <= 60} and returns how many binary strings of length n have as many 0s as 1s and contain neither \"010\" nor \"101\" as a substring (the empty string counts once)."
+ },
+ {
+  "id": "c6-dijkstra",
+  "domain": "code",
+  "level": 6,
+  "prompt": "run(input) receives {\"edges\": [[u, v, w], ...], \"start\": str, \"goal\": str} for an undirected graph with string nodes and positive integer weights. Return {\"distance\": d, \"path\": [nodes from start to goal]} for the shortest route; among equally short routes choose the one whose node list is smallest in lexicographic (list) order. Return null if the goal is unreachable."
+ },
+ {
+  "id": "r6-pid",
+  "domain": "robot",
+  "level": 6,
+  "prompt": "Simulate a PID controller moving a point mass along a line: run(input) receives {\"x0\", \"target\", \"kp\", \"ki\", \"kd\", \"u_max\", \"dt\", \"steps\"}. Start with velocity 0, integral 0 and no previous error. Each step: e = target - x; integral += e*dt; derivative = 0 on the first step, otherwise (e - previous e)/dt; u = kp*e + ki*integral + kd*derivative clipped to [-u_max, u_max]; v += u*dt; x += v*dt. Return {\"x\": final x rounded to 4 decimals, \"settle_step\": the 1-based step from which |target - x| stayed within 2% of |target - x0| through the last step, or null}."
+ }
+]

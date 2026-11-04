@@ -1,0 +1,74 @@
+[
+ {
+  "id": "h-m1-digits",
+  "domain": "math",
+  "level": 7,
+  "prompt": "run(input) receives {\"n\": int, 1 <= n <= 10^18} and returns how many integers k with 1 <= k <= n have a digit sum that is a prime number."
+ },
+ {
+  "id": "h-c1-regex",
+  "domain": "code",
+  "level": 7,
+  "prompt": "run(input) receives {\"pattern\": str, \"text\": str}. The pattern uses only lowercase letters, \".\" (any one character), the postfix operators \"*\", \"+\" and \"?\", alternation \"|\" and parentheses for grouping, with the usual meanings and precedence. Return true if the whole text matches the pattern, otherwise false. Do not use the re module."
+ },
+ {
+  "id": "h-r1-drag",
+  "domain": "robot",
+  "level": 7,
+  "prompt": "A projectile with quadratic air drag: acceleration = (-k*|v|*vx, -9.81 - k*|v|*vy). run(input) receives {\"speed\", \"angle_deg\", \"k\", \"dt\"}; start at (0, 0). Integrate with the classical 4th-order Runge-Kutta method with fixed step dt until the first step whose new y is below 0, then interpolate linearly in y between the last two states to find the landing x. Return that x rounded to 3 decimals."
+ },
+ {
+  "id": "h-m2-squarefree",
+  "domain": "math",
+  "level": 8,
+  "prompt": "run(input) receives {\"n\": int, 1 <= n <= 10^12} and returns how many integers k with 1 <= k <= n are squarefree (not divisible by any square greater than 1)."
+ },
+ {
+  "id": "h-m3-primroot",
+  "domain": "math",
+  "level": 8,
+  "prompt": "run(input) receives {\"p\": a prime, 2 <= p <= 10^12} and returns the smallest positive primitive root modulo p."
+ },
+ {
+  "id": "h-c2-substrings",
+  "domain": "code",
+  "level": 8,
+  "prompt": "run(input) receives {\"s\": str} with up to 100000 lowercase letters and returns the number of distinct non-empty substrings of s."
+ },
+ {
+  "id": "h-r2-turning",
+  "domain": "robot",
+  "level": 8,
+  "prompt": "run(input) receives {\"grid\": [str, ...], \"start\": [row, col], \"goal\": [row, col], \"turn_cost\": int >= 1} with \".\" free and \"#\" walls. The robot starts facing east (increasing column). It can move one cell forward in the direction it faces (cost 1) or turn 90 degrees left or right in place (cost turn_cost). Return the minimum total cost to reach the goal cell in any heading, or -1 if it cannot."
+ },
+ {
+  "id": "h-m4-sqrtmod",
+  "domain": "math",
+  "level": 9,
+  "prompt": "run(input) receives {\"a\": int, \"p\": prime up to about 10^18} and returns the smallest x with 0 <= x < p and x*x = a (mod p), or null if there is none."
+ },
+ {
+  "id": "h-c3-maxflow",
+  "domain": "code",
+  "level": 9,
+  "prompt": "run(input) receives {\"n\": nodes 0..n-1, \"source\": int, \"sink\": int, \"edges\": [[u, v, capacity], ...]} for a directed graph (parallel edges allowed) and returns the maximum flow value from source to sink."
+ },
+ {
+  "id": "h-c4-puzzle",
+  "domain": "code",
+  "level": 9,
+  "prompt": "run(input) receives {\"board\": 3x3 list of lists with the numbers 0..8, 0 being the blank}. A move slides a tile next to the blank into it. Return the fewest moves to reach [[1,2,3],[4,5,6],[7,8,0]], or -1 if impossible."
+ },
+ {
+  "id": "h-r3-arm",
+  "domain": "robot",
+  "level": 9,
+  "prompt": "A planar two-link arm has its base at the origin: the elbow is at l1*(cos t1, sin t1) and the hand at elbow + l2*(cos(t1+t2), sin(t1+t2)). run(input) receives {\"l1\", \"l2\", \"x\", \"y\"} and returns [t1, t2] in radians that put the hand at (x, y), choosing the solution with 0 <= t2 <= pi and t1 normalised to (-pi, pi], each rounded to 4 decimals; return null if (x, y) is out of reach."
+ },
+ {
+  "id": "h-r4-collide",
+  "domain": "robot",
+  "level": 9,
+  "prompt": "Particles move on the segment [0, length] of a line with constant velocities between collisions, in increasing order of position. Collisions between neighbours are perfectly elastic (masses given), and the end particles bounce off the walls at 0 and length by reversing velocity. run(input) receives {\"x\": [positions], \"v\": [velocities], \"m\": [masses], \"length\": float, \"t\": float} and returns the positions at time t, in the same order, each rounded to 4 decimals."
+ }
+]

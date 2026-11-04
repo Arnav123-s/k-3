@@ -1,0 +1,528 @@
+[
+ {
+  "id": "numbers-egcd",
+  "chain": "numbers",
+  "request": "Write run(p). p has positive integers a,b. Return {g,x,y} where g=gcd(a,b) and a*x+b*y=g, with x,y the coefficients produced by the standard iterative extended Euclidean algorithm (start x0=1,y0=0,x1=0,y1=1; at each step q=a//b).",
+  "checks": [
+   {
+    "input": {
+     "a": 240,
+     "b": 46
+    },
+    "expected": {
+     "g": 2,
+     "x": -9,
+     "y": 47
+    }
+   },
+   {
+    "input": {
+     "a": 17,
+     "b": 5
+    },
+    "expected": {
+     "g": 1,
+     "x": -2,
+     "y": 7
+    }
+   },
+   {
+    "input": {
+     "a": 9,
+     "b": 6
+    },
+    "expected": {
+     "g": 3,
+     "x": 1,
+     "y": -1
+    }
+   }
+  ]
+ },
+ {
+  "id": "numbers-dioph",
+  "chain": "numbers",
+  "request": "Write run(p). For positive integers a,b and integer c, solve a*x+b*y=c. Return {x,y} with x the least nonnegative integer that admits an integer y, or null if no integer solution exists.",
+  "checks": [
+   {
+    "input": {
+     "a": 6,
+     "b": 9,
+     "c": 3
+    },
+    "expected": {
+     "x": 2,
+     "y": -1
+    }
+   },
+   {
+    "input": {
+     "a": 6,
+     "b": 9,
+     "c": 4
+    },
+    "expected": null
+   },
+   {
+    "input": {
+     "a": 43,
+     "b": 97,
+     "c": 1
+    },
+    "expected": {
+     "x": 88,
+     "y": -39
+    }
+   }
+  ]
+ },
+ {
+  "id": "numbers-kuttaka",
+  "chain": "numbers",
+  "request": "Write run(p) for the remainder problem (Aryabhata's kuttaka). p has equal-length lists remainders and moduli (moduli positive, not necessarily coprime). Return the least nonnegative integer N with N mod moduli[i] == remainders[i] mod moduli[i] for every i, or null if none exists.",
+  "checks": [
+   {
+    "input": {
+     "remainders": [
+      2,
+      3
+     ],
+     "moduli": [
+      3,
+      5
+     ]
+    },
+    "expected": 8
+   },
+   {
+    "input": {
+     "remainders": [
+      1,
+      2
+     ],
+     "moduli": [
+      4,
+      6
+     ]
+    },
+    "expected": null
+   },
+   {
+    "input": {
+     "remainders": [
+      3,
+      5
+     ],
+     "moduli": [
+      4,
+      6
+     ]
+    },
+    "expected": 11
+   }
+  ]
+ },
+ {
+  "id": "physics-collide",
+  "chain": "physics",
+  "request": "Write run(p) for a one-dimensional perfectly elastic collision. p gives positive integer masses m1,m2 and integer velocities u1,u2. Return {v1:[num,den],v2:[num,den]} as exact reduced fractions with positive denominators (the nontrivial branch of momentum and energy conservation).",
+  "checks": [
+   {
+    "input": {
+     "m1": 1,
+     "m2": 1,
+     "u1": -1,
+     "u2": 1
+    },
+    "expected": {
+     "v1": [
+      1,
+      1
+     ],
+     "v2": [
+      -1,
+      1
+     ]
+    }
+   },
+   {
+    "input": {
+     "m1": 1,
+     "m2": 3,
+     "u1": 4,
+     "u2": 0
+    },
+    "expected": {
+     "v1": [
+      -2,
+      1
+     ],
+     "v2": [
+      2,
+      1
+     ]
+    }
+   },
+   {
+    "input": {
+     "m1": 2,
+     "m2": 1,
+     "u1": 3,
+     "u2": -3
+    },
+    "expected": {
+     "v1": [
+      -1,
+      1
+     ],
+     "v2": [
+      5,
+      1
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "id": "physics-energy",
+  "chain": "physics",
+  "request": "Write run(p). Same inputs as a 1-D perfectly elastic collision (masses m1,m2, velocities u1,u2). Return the total kinetic energy after the collision, computed from the final velocities, as an exact reduced fraction [num,den] with positive denominator.",
+  "checks": [
+   {
+    "input": {
+     "m1": 1,
+     "m2": 1,
+     "u1": -1,
+     "u2": 1
+    },
+    "expected": [
+     1,
+     1
+    ]
+   },
+   {
+    "input": {
+     "m1": 1,
+     "m2": 3,
+     "u1": 4,
+     "u2": 0
+    },
+    "expected": [
+     8,
+     1
+    ]
+   },
+   {
+    "input": {
+     "m1": 2,
+     "m2": 3,
+     "u1": 1,
+     "u2": 0
+    },
+    "expected": [
+     1,
+     1
+    ]
+   }
+  ]
+ },
+ {
+  "id": "physics-impulse",
+  "chain": "physics",
+  "request": "Write run(p). Same inputs as a 1-D perfectly elastic collision. Return the momentum gained by body 2, m2*(v2-u2), as an exact reduced fraction [num,den] with positive denominator.",
+  "checks": [
+   {
+    "input": {
+     "m1": 1,
+     "m2": 1,
+     "u1": -1,
+     "u2": 1
+    },
+    "expected": [
+     -2,
+     1
+    ]
+   },
+   {
+    "input": {
+     "m1": 1,
+     "m2": 3,
+     "u1": 4,
+     "u2": 0
+    },
+    "expected": [
+     6,
+     1
+    ]
+   },
+   {
+    "input": {
+     "m1": 2,
+     "m2": 3,
+     "u1": 1,
+     "u2": 0
+    },
+    "expected": [
+     12,
+     5
+    ]
+   }
+  ]
+ },
+ {
+  "id": "grid-path",
+  "chain": "grid",
+  "request": "Write run(p) to plan a shortest path on a grid (simulation). p has rows,cols,start,goal,blocked; positions are [row,col] from zero. Moves: up,right,down,left, explored breadth-first in that order, first discovery wins. Return the path including both ends, or null if impossible or an endpoint is blocked/outside.",
+  "checks": [
+   {
+    "input": {
+     "rows": 2,
+     "cols": 2,
+     "start": [
+      0,
+      0
+     ],
+     "goal": [
+      1,
+      1
+     ],
+     "blocked": []
+    },
+    "expected": [
+     [
+      0,
+      0
+     ],
+     [
+      0,
+      1
+     ],
+     [
+      1,
+      1
+     ]
+    ]
+   },
+   {
+    "input": {
+     "rows": 2,
+     "cols": 2,
+     "start": [
+      0,
+      0
+     ],
+     "goal": [
+      1,
+      1
+     ],
+     "blocked": [
+      [
+       0,
+       1
+      ],
+      [
+       1,
+       0
+      ]
+     ]
+    },
+    "expected": null
+   },
+   {
+    "input": {
+     "rows": 1,
+     "cols": 1,
+     "start": [
+      0,
+      0
+     ],
+     "goal": [
+      0,
+      0
+     ],
+     "blocked": []
+    },
+    "expected": [
+     [
+      0,
+      0
+     ]
+    ]
+   }
+  ]
+ },
+ {
+  "id": "grid-via",
+  "chain": "grid",
+  "request": "Write run(p). Grid as in breadth-first path planning (rows,cols,start,goal,blocked; moves up,right,down,left in that order, first discovery wins), plus waypoint. Return the path from start to waypoint followed by the path from waypoint to goal (waypoint listed once), each leg being that breadth-first shortest path; null if either leg is impossible.",
+  "checks": [
+   {
+    "input": {
+     "rows": 2,
+     "cols": 2,
+     "start": [
+      0,
+      0
+     ],
+     "goal": [
+      0,
+      1
+     ],
+     "waypoint": [
+      1,
+      1
+     ],
+     "blocked": []
+    },
+    "expected": [
+     [
+      0,
+      0
+     ],
+     [
+      0,
+      1
+     ],
+     [
+      1,
+      1
+     ],
+     [
+      0,
+      1
+     ]
+    ]
+   },
+   {
+    "input": {
+     "rows": 2,
+     "cols": 2,
+     "start": [
+      0,
+      0
+     ],
+     "goal": [
+      1,
+      1
+     ],
+     "waypoint": [
+      0,
+      1
+     ],
+     "blocked": [
+      [
+       0,
+       1
+      ]
+     ]
+    },
+    "expected": null
+   },
+   {
+    "input": {
+     "rows": 1,
+     "cols": 3,
+     "start": [
+      0,
+      0
+     ],
+     "goal": [
+      0,
+      0
+     ],
+     "waypoint": [
+      0,
+      2
+     ],
+     "blocked": []
+    },
+    "expected": [
+     [
+      0,
+      0
+     ],
+     [
+      0,
+      1
+     ],
+     [
+      0,
+      2
+     ],
+     [
+      0,
+      1
+     ],
+     [
+      0,
+      0
+     ]
+    ]
+   }
+  ]
+ },
+ {
+  "id": "grid-steps",
+  "chain": "grid",
+  "request": "Write run(p). Grid as in breadth-first path planning (rows,cols,start,goal,blocked). Return the number of moves on a shortest path, or null if none exists or an endpoint is blocked/outside.",
+  "checks": [
+   {
+    "input": {
+     "rows": 2,
+     "cols": 2,
+     "start": [
+      0,
+      0
+     ],
+     "goal": [
+      1,
+      1
+     ],
+     "blocked": []
+    },
+    "expected": 2
+   },
+   {
+    "input": {
+     "rows": 2,
+     "cols": 2,
+     "start": [
+      0,
+      0
+     ],
+     "goal": [
+      1,
+      1
+     ],
+     "blocked": [
+      [
+       0,
+       1
+      ],
+      [
+       1,
+       0
+      ]
+     ]
+    },
+    "expected": null
+   },
+   {
+    "input": {
+     "rows": 1,
+     "cols": 1,
+     "start": [
+      0,
+      0
+     ],
+     "goal": [
+      0,
+      0
+     ],
+     "blocked": []
+    },
+    "expected": 0
+   }
+  ]
+ }
+]

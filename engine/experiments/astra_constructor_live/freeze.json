@@ -1,0 +1,112 @@
+{
+  "arm_order": [
+    [
+      "WITH_CONSTRUCTOR",
+      "MODEL_ONLY"
+    ],
+    [
+      "MODEL_ONLY",
+      "WITH_CONSTRUCTOR"
+    ],
+    [
+      "WITH_CONSTRUCTOR",
+      "MODEL_ONLY"
+    ]
+  ],
+  "budgets": {
+    "acquisition_python_executions": 47,
+    "context_bytes_per_call": 24000,
+    "fresh_process_reuse_python_executions": 2,
+    "model_calls": 10,
+    "observation_reveals": 4,
+    "outage_limit": 5,
+    "python_executions_total": 49,
+    "request_seconds": 300,
+    "response_tokens_per_call": 8192,
+    "sandbox_seconds": 30,
+    "tool_calls": 9
+  },
+  "fixture_sha256": {
+    "1171": "097079471fb865bc06c4bded6032826a54c62eea49dad0f932017cec6dd91268",
+    "1173": "4efe50d811987bb38c4498a6bf270e56ce32d683dfa10c2fdc0d43252a34d517",
+    "1177": "bc0b759404c7f05e43927d3fef99f79e7b8406e52a0fee109b98145be07dc990",
+    "1181": "be0238cfe20e6846af1bcc63abf06667baa0891fef878902667663c2c030bab7"
+  },
+  "format": "astra-constructor-live-freeze-v1",
+  "model": {
+    "credential_env": "NVIDIA_API_KEY",
+    "identity": {
+      "endpoint": "https://integrate.api.nvidia.com/v1",
+      "generation": {
+        "max_tokens": 8192,
+        "reasoning_effort": "high",
+        "stream": true,
+        "temperature": 0.95,
+        "top_p": 1.0
+      },
+      "instructions_sha256": "032cd8ef7c63c0a52469ad88e70c6985b0cf8a4e5ce42a9d52c7623d7cc9b66c",
+      "model": "meta/muse-glimmer-30b",
+      "protocol": "openai"
+    },
+    "parse_mode": "strict",
+    "reasoning_hint": null,
+    "sampling_fields": true,
+    "timeout_seconds": 300
+  },
+  "source_sha256": {
+    "experiments/astra_constructor_live/PROTOCOL.md": "9f6d21fe713b6a7ea172d994ac442c2bdc018d0473551c7ee4eecb796eac704a",
+    "experiments/astra_constructor_live/run.py": "e5696cc5ddc4a885a4331db0b2bb558ec3500b0e17bea4c36eea88223e35fffe",
+    "kuttaka_runtime/__init__.py": "de02664c608286dca4f6f5353dc688dc6c2d3b6a23b60222f2ac4ab5b824628a",
+    "kuttaka_runtime/__main__.py": "935a1c1166b0c1ea35a82256345000bf2c73ded718d77773bc27a71ecce28f7d",
+    "kuttaka_runtime/adaptive_planning_memory.py": "a6535d08763ddbd5dc9b7f6b59cbe3acdb55c36a29856020181b3258a4399d7d",
+    "kuttaka_runtime/artifacts.py": "c5d6e83de19fa145774f3d6e646a2af60644daba3aaba9ecf678ee8dd4ffb348",
+    "kuttaka_runtime/beliefs.py": "d027427a404cbb3ae8f505cd458cbe19d78bd9839f84fad7225dc8395b530c90",
+    "kuttaka_runtime/campaign.py": "ff71eeff3f0aa7332a08291d5074fa4f4c39cae841b081353d1e924b24af7dd7",
+    "kuttaka_runtime/cli.py": "2fbb41d92c0214bac6b5105b9aca51980c01cf19a273bd88c47718e411ed2f38",
+    "kuttaka_runtime/context_memory.py": "0135d4075dcb090f995edbf9f8eb3fbc981e3684c18dc2378c8f9d8d365bf466",
+    "kuttaka_runtime/discovery.py": "4854c37095751cbe5050fb4be3421bc798d086031e5761231e6be4e4a8e3e472",
+    "kuttaka_runtime/execution.py": "27f9120f6cc8020e8a26bd02032c092ee77fb426452aafd58c0b7cec868ac3be",
+    "kuttaka_runtime/factored_memory.py": "f8597bfae80cd9928b21510e90788c1a5f5a2274d2f815427e7e1bb9e3e161c7",
+    "kuttaka_runtime/goals.py": "facd2f11578489e534c833be93061e34235cfcc6de97ed7c330862b0a6d74a75",
+    "kuttaka_runtime/inquiry.py": "897f2d6984a32d3ab23c8e5dbde4060ee722c48cc56471dd9aba441193138888",
+    "kuttaka_runtime/investigators.py": "109b1b5a1a220ce0ab4565cf3375a7dab69f0dfd332b00433a125ffedf2982e9",
+    "kuttaka_runtime/models.py": "ab2f09b6fd5af95aa4383f871a9638a2b2110663c8223a04de5aa4e6042bd101",
+    "kuttaka_runtime/planning_memory.py": "162fd2ebd3950f139405fad1d5bf8cc68c491d101ff43be84785571f6a1fd861",
+    "kuttaka_runtime/programs.py": "e914351f5bbd30211438437b531972abb570593a8bbec9377f1165c7d221b76c",
+    "kuttaka_runtime/query_memory.py": "4f9f6360b0174b742c7c14db43fc5468e6a095329c798d2bd9907bda3740473e",
+    "kuttaka_runtime/rational_ratio.py": "5dafd64a384e6252eb99c53b663cd07ea2dec36f3d5c180b5b6fe44ab07926e9",
+    "kuttaka_runtime/receipts.py": "a9f4486586a5bea484b1855894d9749e3331a20042f67739deb11e2b6da41008",
+    "kuttaka_runtime/recurrence.py": "22f0e727e592b751a165726ae2dedbefe222082f3979f21ab4d2306ada0768f1",
+    "kuttaka_runtime/representation_search.py": "1fa3d643060397528764aa1b588d22898729e4b1cbc6efdadbbaa9aab062b6fd",
+    "kuttaka_runtime/runtime.py": "8b3fe97dcec19ad677a3d0eef48dce31ede9ef71bbbcda4d14baae51a47a16d7",
+    "kuttaka_runtime/sequence_memory.py": "786bd26e28029380503268e074afd01ec2c12398f2fd8c6df91dc48b45ce0c85",
+    "kuttaka_runtime/session.py": "229911dcf94efbaa4dc591c2c875aedef75d8fbc02faa6102fef9f36e0d9cbba",
+    "kuttaka_runtime/shift_relation.py": "da53ef3525af87463ad9cded9ff1de5b545db3d555d408ca926c41937e0760bc",
+    "kuttaka_runtime/store.py": "5fd0184ef7ce90f554f4476b88f0d0a264ec894b63fff5d47f9047cb0122699a",
+    "tests/test_astra_constructor_live.py": "74ca5bf570b79da2f5e3b74cb797d959f784c742fdc5f2fd200192d4020fbdb0"
+  },
+  "toolsets": {
+    "common": [
+      "remember_method",
+      "inspect_method",
+      "find_methods",
+      "probe_method",
+      "validate_method",
+      "observe_next"
+    ],
+    "constructor_max_columns": 12,
+    "constructor_parameters": [
+      "order",
+      "degree"
+    ],
+    "with_constructor": [
+      "remember_method",
+      "inspect_method",
+      "find_methods",
+      "probe_method",
+      "validate_method",
+      "observe_next",
+      "fit_relation"
+    ]
+  }
+}

@@ -1,0 +1,74 @@
+[
+ {
+  "id": "n1-lcm",
+  "domain": "number",
+  "level": 1,
+  "prompt": "run(input) receives {\"values\": [positive ints]} (at least one) and returns their least common multiple."
+ },
+ {
+  "id": "n2-congruence",
+  "domain": "number",
+  "level": 2,
+  "prompt": "run(input) receives {\"a\": int, \"b\": int, \"m\": int >= 1} and returns the sorted list of all x in 0..m-1 with a*x = b (mod m); empty if none."
+ },
+ {
+  "id": "n3-crt-count",
+  "domain": "number",
+  "level": 3,
+  "prompt": "run(input) receives {\"congruences\": [[r, m], ...], \"low\": int, \"high\": int} with moduli that need not be coprime, and returns how many integers x with low <= x <= high satisfy x = r (mod m) for every pair."
+ },
+ {
+  "id": "n4-eggs",
+  "domain": "number",
+  "level": 4,
+  "prompt": "A basket of eggs: grouped g at a time, r eggs are left over, for each [g, r] in {\"groups\": [[g, r], ...]}. run(input) returns the smallest positive number of eggs that fits every grouping, or null if none."
+ },
+ {
+  "id": "r7-path",
+  "domain": "robot",
+  "level": 1,
+  "prompt": "run(input) receives {\"grid\": [str, ...], \"start\": [row, col], \"goal\": [row, col]} with \".\" free and \"#\" walls. Return a shortest path as a list of [row, col] cells from start to goal inclusive, found by breadth-first search trying neighbours in the order up, right, down, left (the first time a cell is reached fixes its predecessor); null if unreachable."
+ },
+ {
+  "id": "r8-moves",
+  "domain": "robot",
+  "level": 2,
+  "prompt": "Same robot and rules as a breadth-first shortest path that tries neighbours up, right, down, left: run(input) receives {\"grid\", \"start\", \"goal\"} and returns the path as a string of moves U, D, L, R (empty if start is goal), or null if unreachable."
+ },
+ {
+  "id": "r9-battery",
+  "domain": "robot",
+  "level": 3,
+  "prompt": "run(input) receives {\"grid\": [str, ...], \"start\", \"goal\", \"battery\": int} where \".\" is free, \"#\" a wall and \"C\" a charger. Each move uses 1 charge; the robot starts full and entering a \"C\" cell refills it to \"battery\". It cannot move with 0 charge. Return the fewest moves to reach goal, or -1."
+ },
+ {
+  "id": "r10-grid-again",
+  "domain": "robot",
+  "level": 4,
+  "prompt": "A warehouse floor has {\"rows\": int, \"cols\": int} cells and {\"blocked\": [[row, col], ...]} shelves. run(input) also receives \"from\" and \"to\" cells and returns the fewest up/down/left/right steps between them avoiding shelves, or -1."
+ },
+ {
+  "id": "l1-tokens",
+  "domain": "language",
+  "level": 1,
+  "prompt": "run(input) receives {\"expr\": str} and returns its tokens as a list of [kind, value]: [\"num\", int] for a run of digits, [\"name\", str] for a letter followed by letters, digits or \"_\", and [\"op\", char] for any other non-space character; spaces separate tokens and are dropped."
+ },
+ {
+  "id": "l2-vars",
+  "domain": "language",
+  "level": 2,
+  "prompt": "run(input) receives {\"expr\": str, \"vars\": {name: int}}: an integer expression with + - * /, parentheses, unary minus, spaces and variable names, and returns its int value (usual precedence, left associative, division truncating toward zero). Do not use eval."
+ },
+ {
+  "id": "l3-program",
+  "domain": "language",
+  "level": 3,
+  "prompt": "run(input) receives {\"lines\": [str, ...]}, each \"name = expression\" in the integer expression language with + - * /, parentheses, unary minus and earlier names (division truncates toward zero). Execute the lines in order and return all variables as an object sorted by name. Do not use eval."
+ },
+ {
+  "id": "l4-calc-again",
+  "domain": "language",
+  "level": 4,
+  "prompt": "A calculator: run(input) receives {\"expressions\": [str, ...]} of integer arithmetic with + - * /, parentheses and unary minus, division truncating toward zero, and returns the list of their values. Do not use eval."
+ }
+]
