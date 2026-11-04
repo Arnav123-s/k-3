@@ -19,3 +19,7 @@ Selected rows from the archived terminal recordings on November 4, 2026. Calls a
 | Glimmer | 14:20:30 | 0/12, 101 calls | 2/12, 92 calls |
 
 The cut shows selected moments from separate runs. These rows compare observed progress at those moments. Call counts differ.
+
+## Run constraints
+
+These results come from the runs I could complete with the model access, compute, and time available. Slow model responses limited how many trials I could finish. Some development runs improved as the system evolved. Faster responses and more time would make it possible to test on a larger scale and see whether those gains hold or grow.

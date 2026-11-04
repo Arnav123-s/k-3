@@ -28,7 +28,7 @@ Record one video and read the quoted lines in order. Pause for two seconds betwe
 
 ## 1:42–2:12 | The animated results
 
-"The hard-suite run took fifty-three model calls with Kuttaka versus twelve alone. In an earlier graded run, the score went from sixteen to eighteen out of eighteen. On a suite where tasks build on each other, Kuttaka with memory solved all twelve. The repository links each result to the run that produced it."
+"The hard-suite run used fifty-three calls with Kuttaka versus twelve alone. These results come from the runs I could complete with the resources and time available. Slow model responses limited how many trials I could finish. Some development runs improved as Kuttaka evolved. With faster responses and more time, I'd test on a larger scale to see whether those gains hold or grow."
 
 ## 2:12–2:32 | The deeper mechanism
 
