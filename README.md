@@ -19,3 +19,5 @@ The growth comparator is Kuttaka with fresh memory. The hard-suite scorecard com
 - [Project results and limitations](https://github.com/Arnav123-s/kuttaka/blob/3409479/HACKATHON.md)
 - [Independent W4-o rescore](https://github.com/Arnav123-s/kuttaka/blob/32c6f37/results/solve-suite/w4o-glimmer-fresh/rescored.json)
 - [LiveCodeBench checkpoint](https://github.com/Arnav123-s/kuttaka/tree/d905468/results/external/race-snapshot-20261104T155245Z)
+
+[Expanded demo preview](kuttaka3-demo-expanded.mp4) · [Demo timing, narration, and evidence](DEMO_EDIT.md)
